@@ -1,17 +1,29 @@
-# Career OS v1
+# Career OS v2
 
-Public portfolio site generated from the workbook `Olha_Lys_PMP_Project_Portfolio.xlsx`.
+A minimalist executive portfolio for Olha Lys.
 
 ## Files
+
 - `index.html` — the website
-- `career-data.json` — workbook data used by the site
+- `career-data.json` — the workbook-derived data and narrative content
+
+## Add your portrait
+
+Place your selected portrait at:
+
+`assets/portrait.jpg`
+
+The homepage automatically uses it when the file exists.
 
 ## Publish on GitHub Pages
+
 1. Upload `index.html` and `career-data.json` to the repository root.
-2. Go to **Settings → Pages**.
-3. Choose **Deploy from a branch**.
-4. Set branch to `main` and folder to `/ (root)`.
+2. Add `assets/portrait.jpg` later if desired.
+3. In **Settings → Pages**, choose **Deploy from a branch**.
+4. Select branch `main` and folder `/ (root)`.
 5. Save and wait for the site URL.
 
-## Notes
-This build intentionally omits direct email addresses from the visible UI for a cleaner public version.
+## Update the content
+
+Most future edits should happen in `career-data.json`.
+That keeps the design stable while the content evolves.

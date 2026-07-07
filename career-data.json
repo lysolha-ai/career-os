@@ -1,9 +1,458 @@
 {
   "meta": {
     "name": "Olha Lys",
-    "headline": "Project Delivery • Transition • Transformation • Communication",
-    "subtitle": "A public, workbook-based Career OS built from documented project inventory, summaries, PMI detail, references and achievements."
+    "title": "Senior IT Project Manager",
+    "tagline": "Helping organizations deliver complex transformation through structured governance, stakeholder alignment, and dependable execution.",
+    "subtitle": "A professional journey built through projects, reflection, and continuous learning.",
+    "version": "2.0",
+    "pageTitle": "Olha Lys — Career OS",
+    "description": "A minimalist, executive-style portfolio that tells the story of Olha Lys through projects, reflection and continuous learning."
   },
+  "profile": {
+    "name": "Olha Lys",
+    "title": "Senior IT Project Manager",
+    "tagline": "Helping organizations deliver complex transformation through structured governance, stakeholder alignment, and dependable execution.",
+    "subtitle": "A professional journey built through projects, reflection, and continuous learning.",
+    "welcome": "Welcome to Career OS. This space is different from a traditional portfolio or CV. Throughout my career, I discovered that projects are more than deliverables and timelines. Every transformation, every challenge, and every collaboration has shaped the way I think about leadership, governance, communication, and continuous improvement. I created Career OS to document that journey—not only what I have delivered, but also what I have learned along the way.",
+    "snapshot": [
+      {
+        "value": "12+ Years",
+        "label": "Enterprise IT Experience"
+      },
+      {
+        "value": "5+ Years",
+        "label": "Project Management"
+      },
+      {
+        "value": "6+",
+        "label": "Enterprise Transformation Initiatives"
+      },
+      {
+        "value": "5+ Countries",
+        "label": "International Delivery"
+      },
+      {
+        "value": "3 Industries",
+        "label": "Manufacturing • Aviation • Financial Services"
+      },
+      {
+        "value": "Governance + Transformation",
+        "label": "Core Focus"
+      }
+    ],
+    "cta": [
+      {
+        "label": "Explore The Journey",
+        "href": "#journey"
+      },
+      {
+        "label": "View Experiences",
+        "href": "#experiences"
+      }
+    ]
+  },
+  "principles": [
+    {
+      "title": "Evidence before claims",
+      "copy": "Everything should be grounded in real projects, real outcomes, and real reflection."
+    },
+    {
+      "title": "Story before chronology",
+      "copy": "Each chapter should explain why it mattered and how it changed the way I work."
+    },
+    {
+      "title": "Calm confidence",
+      "copy": "The visual language should feel structured, premium, and understated."
+    },
+    {
+      "title": "Continuous evolution",
+      "copy": "The site should grow as my career grows, with new chapters added over time."
+    }
+  ],
+  "journey": [
+    {
+      "id": "j1",
+      "step": "01",
+      "period": "2014–2015",
+      "title": "Learning Discipline",
+      "subtitle": "IBM — Asset Management Analyst & Data Quality Focal Point",
+      "reflection": "This is where I learned that precision, process discipline and data quality create the invisible foundation for successful delivery.",
+      "theme": "Operational Excellence",
+      "prepared_for": "People leadership",
+      "note": "Accuracy, compliance and process thinking became part of how I approach every later project."
+    },
+    {
+      "id": "j2",
+      "step": "02",
+      "period": "2015–2018",
+      "title": "Learning to Lead",
+      "subtitle": "IBM — Team Leader and Compliance Lead",
+      "reflection": "Before I led projects, I learned how to lead people: coach, hire, organize work, and keep teams aligned.",
+      "theme": "People Leadership",
+      "prepared_for": "Project ownership",
+      "note": "This chapter shaped the way I work with teams, escalations, and performance expectations."
+    },
+    {
+      "id": "j3",
+      "step": "03",
+      "period": "2018–2019",
+      "title": "Becoming a Project Manager",
+      "subtitle": "Hydro — RFS Infrastructure Delivery Portfolio",
+      "reflection": "My first formal Project Manager role taught me that successful delivery starts long before execution.",
+      "theme": "Project Delivery",
+      "prepared_for": "Crisis leadership",
+      "note": "A portfolio of customer-requested infrastructure work became the foundation of my PM career."
+    },
+    {
+      "id": "j4",
+      "step": "04",
+      "period": "2019",
+      "title": "Leading Through Crisis",
+      "subtitle": "Hydro — Cyberattack Recovery Response",
+      "reflection": "This was the moment I learned what leadership looks like when plans disappear and delivery becomes recovery.",
+      "theme": "Crisis Leadership",
+      "prepared_for": "Transition governance",
+      "note": "The recovery response demanded calm coordination, prioritization and constant communication."
+    },
+    {
+      "id": "j5",
+      "step": "05",
+      "period": "2020",
+      "title": "Discovering Transformation",
+      "subtitle": "Carrefour — ARGO Transition & Transformation Program",
+      "reflection": "This was the moment I stopped thinking only about projects and started thinking about organizational transformation.",
+      "theme": "Transition Governance",
+      "prepared_for": "Enterprise transformation",
+      "note": "The work was multi-workstream, international and highly governed—exactly the kind of complexity I enjoy."
+    },
+    {
+      "id": "j6",
+      "step": "06",
+      "period": "2021–2022",
+      "title": "Enterprise Transformation at Scale",
+      "subtitle": "Lufthansa — FITO2 MCMP AIOps Reporting Migration",
+      "reflection": "Here I learned that governance and executive reporting are just as important as technical delivery.",
+      "theme": "Enterprise Transformation",
+      "prepared_for": "Business and commercial transformation",
+      "note": "This chapter broadened my perspective from project coordination to enterprise-level delivery and governance."
+    },
+    {
+      "id": "j7",
+      "step": "07",
+      "period": "2022–2023",
+      "title": "Communication Enables Change",
+      "subtitle": "Luminor — Lighthouse 2 Transformation Communication & Change Management",
+      "reflection": "I learned that technology changes systems, but communication changes how people experience transformation.",
+      "theme": "Communication Governance",
+      "prepared_for": "Continuous learning",
+      "note": "The work showed me that communication is not a side activity—it is part of delivery."
+    },
+    {
+      "id": "j8",
+      "step": "08",
+      "period": "Now",
+      "title": "Current Chapter",
+      "subtitle": "In progress",
+      "reflection": "This chapter is still being written.",
+      "theme": "In Progress",
+      "prepared_for": "The next transformation",
+      "note": "I leave this open on purpose, because the story is still evolving."
+    }
+  ],
+  "experiences": [
+    {
+      "projectId": "P001",
+      "chapter": "Chapter 3",
+      "chapterTitle": "Becoming a Project Manager",
+      "title": "Hydro AS – RFS Infrastructure Delivery Portfolio",
+      "company": "IBM",
+      "customer": "Hydro AS",
+      "period": "May 2018 – Apr 2019",
+      "role": "RFS Project Manager",
+      "theme": "Project Delivery",
+      "accent": "#1d4ed8",
+      "reflection": "This is where I learned that successful delivery starts long before execution.",
+      "context": "My first formal PM role in IBM, managing a portfolio of customer-requested infrastructure work.",
+      "challenge": "A portfolio of roughly 40 concurrent RFSs required prioritization, communication and strong governance.",
+      "contribution": "I planned, coordinated, monitored and closed infrastructure changes across servers, databases, application deployments and migration-related activities.",
+      "outcome": "The portfolio was delivered with quality and became the foundation of my PM career.",
+      "lessons": [
+        "Structured planning",
+        "Stakeholder communication",
+        "Governance",
+        "Delivery discipline"
+      ],
+      "preparedFor": "Crisis leadership during the Hydro recovery response.",
+      "competencies": [
+        "Project Planning",
+        "Governance",
+        "Stakeholder Management",
+        "Delivery"
+      ],
+      "evidence": "RFS tracker, SoW, DOU, PDR, weekly status reports and customer communications.",
+      "pmi": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"
+    },
+    {
+      "projectId": "P002",
+      "chapter": "Chapter 4",
+      "chapterTitle": "Leading Through Crisis",
+      "title": "Hydro Cyberattack Recovery Response",
+      "company": "IBM",
+      "customer": "Hydro AS",
+      "period": "Mar 2019 – Apr 2019",
+      "role": "Project Manager",
+      "theme": "Crisis Leadership",
+      "accent": "#0f766e",
+      "reflection": "This is where I learned what leadership looks like when plans disappear.",
+      "context": "A full-time crisis assignment after the Hydro cyberattack shifted my work from routine delivery to recovery coordination.",
+      "challenge": "The recovery effort demanded 24/7 coordination, fast prioritization and constant communication across many teams.",
+      "contribution": "As one of three IBM Project Managers, I coordinated cross-functional recovery activities and kept restoration moving.",
+      "outcome": "The recovery response was structured and supported with continuous stakeholder communication.",
+      "lessons": [
+        "Decision-making under pressure",
+        "Resilience",
+        "Crisis coordination",
+        "Trust"
+      ],
+      "preparedFor": "Transition governance at Carrefour.",
+      "competencies": [
+        "Crisis Leadership",
+        "Stakeholder Management",
+        "Coordination",
+        "Risk Management"
+      ],
+      "evidence": "Publicly documented crisis, account assignment, personal project history and recovery coordination notes.",
+      "pmi": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"
+    },
+    {
+      "projectId": "P003",
+      "chapter": "Chapter 5",
+      "chapterTitle": "Discovering Transformation",
+      "title": "Carrefour ARGO Transition & Transformation Program",
+      "company": "IBM",
+      "customer": "Carrefour",
+      "period": "Apr 2020 – Dec 2020",
+      "role": "Transition & Transformation Project Manager",
+      "theme": "Transition Governance",
+      "accent": "#16a34a",
+      "reflection": "This was the moment I stopped thinking only about projects and started thinking about organizational transformation.",
+      "context": "A multi-workstream transition program moving infrastructure services from European delivery centers to India.",
+      "challenge": "Multiple workstreams, multiple stakeholders and pandemic constraints required disciplined governance and clear execution.",
+      "contribution": "I authored PDRs, led kick-offs, coordinated knowledge transfer and cutover activities, and managed RAID and reporting.",
+      "outcome": "The team delivered key milestones and was formally recognized for delivery excellence.",
+      "lessons": [
+        "Governance enables transformation",
+        "Clarity keeps complex work moving",
+        "International delivery needs structure"
+      ],
+      "preparedFor": "Enterprise transformation at Lufthansa.",
+      "competencies": [
+        "Transition",
+        "Governance",
+        "International Delivery",
+        "Stakeholder Management"
+      ],
+      "evidence": "PDRs, kick-off decks, KT plans, governance materials, meeting minutes and recognition messages.",
+      "pmi": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"
+    },
+    {
+      "projectId": "P004",
+      "chapter": "Chapter 6",
+      "chapterTitle": "Enterprise Transformation at Scale",
+      "title": "Lufthansa FITO2 – MCMP AIOps Reporting Migration",
+      "company": "Kyndryl",
+      "customer": "Lufthansa",
+      "period": "Jan 2021 – Sep 2022",
+      "role": "Transition Project Manager",
+      "theme": "Enterprise Transformation",
+      "accent": "#1e3a8a",
+      "reflection": "Here I learned that governance and executive reporting are just as important as technical delivery.",
+      "context": "An enterprise reporting migration within the FITO2 transformation program.",
+      "challenge": "The migration involved architecture, dependencies and business readiness across multiple teams.",
+      "contribution": "I established the PDR, coordinated workshops, prepared executive reporting and kept the program on track.",
+      "outcome": "The migration governance and coordination were successfully delivered and supported business readiness.",
+      "lessons": [
+        "Executive reporting",
+        "Dependency management",
+        "Clear ownership",
+        "Business readiness"
+      ],
+      "preparedFor": "Commercial and process transformation at Billing & Consumption.",
+      "competencies": [
+        "Governance",
+        "Executive Reporting",
+        "Transformation",
+        "Stakeholder Management"
+      ],
+      "evidence": "PDR, executive weekly status reports, workshops, organization chart and project reporting.",
+      "pmi": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"
+    },
+    {
+      "projectId": "P005",
+      "chapter": "Chapter 6",
+      "chapterTitle": "Business Transformation",
+      "title": "Lufthansa FITO2 – Billing & Consumption",
+      "company": "Kyndryl",
+      "customer": "Lufthansa",
+      "period": "Jun 2022 – Sep 2022",
+      "role": "Transition Project Manager",
+      "theme": "Business Transformation",
+      "accent": "#0f766e",
+      "reflection": "This project showed me how deeply business, finance and technology need to be aligned for transformation to work.",
+      "context": "I took over Billing & Consumption once the reporting workstream had stabilized.",
+      "challenge": "Commercial and technical stakeholders had to align on invoicing, consumption and ServiceNow processes.",
+      "contribution": "I coordinated planning, workshops, process alignment, release planning and handover activities.",
+      "outcome": "Continuity was maintained and the new processes moved forward with cross-functional alignment.",
+      "lessons": [
+        "Transformation is operational",
+        "Commercial alignment matters",
+        "Cross-functional clarity drives progress"
+      ],
+      "preparedFor": "Communication and change governance at Luminor.",
+      "competencies": [
+        "Business Transformation",
+        "Customer Management",
+        "Governance",
+        "Change Management"
+      ],
+      "evidence": "Billing & Consumption PDR, weekly reports, handover documents and customer workshops.",
+      "pmi": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"
+    },
+    {
+      "projectId": "P006",
+      "chapter": "Chapter 7",
+      "chapterTitle": "Communication Enables Change",
+      "title": "Luminor Lighthouse 2 – Transformation Communication & Change Management",
+      "company": "Kyndryl",
+      "customer": "Luminor",
+      "period": "Sep 2022 – Sep 2023",
+      "role": "Transformation Communication Manager",
+      "theme": "Communication Governance",
+      "accent": "#7c3aed",
+      "reflection": "I learned that technology changes systems, but communication changes how people experience transformation.",
+      "context": "A large transformation program in a regulated banking environment.",
+      "challenge": "Communication had to be timely, consistent and coordinated across multiple workstreams and stakeholders.",
+      "contribution": "I built communication governance, templates, change calendars, Go-Live comms and stakeholder messaging.",
+      "outcome": "The program gained structured communication support across migration, release and hypercare activities.",
+      "lessons": [
+        "Communication is part of delivery",
+        "Readiness starts with clarity",
+        "Consistency builds trust"
+      ],
+      "preparedFor": "Continuous learning through AI Academy and future transformation work.",
+      "competencies": [
+        "Communication",
+        "Change Management",
+        "Governance",
+        "Stakeholder Management"
+      ],
+      "evidence": "Communication plan, migration communication templates, Go-Live notices, change calendars and tracker artifacts.",
+      "pmi": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"
+    }
+  ],
+  "competencies": [
+    {
+      "name": "Operational Excellence",
+      "summary": "Precision, data quality and process discipline shaped the foundation of the career.",
+      "projectIds": [
+        "P001"
+      ]
+    },
+    {
+      "name": "People Leadership",
+      "summary": "Coaching, hiring and leading teams before becoming a PM.",
+      "projectIds": [
+        "P002"
+      ]
+    },
+    {
+      "name": "Project Delivery",
+      "summary": "Planning, coordination, governance and delivery discipline.",
+      "projectIds": [
+        "P001",
+        "P003"
+      ]
+    },
+    {
+      "name": "Crisis Leadership",
+      "summary": "Coordination under pressure and decision-making when plans disappear.",
+      "projectIds": [
+        "P002"
+      ]
+    },
+    {
+      "name": "Transition Governance",
+      "summary": "Structured transformation delivery across teams and countries.",
+      "projectIds": [
+        "P003",
+        "P006"
+      ]
+    },
+    {
+      "name": "Enterprise Transformation",
+      "summary": "Executive reporting, dependencies and program-level governance.",
+      "projectIds": [
+        "P004",
+        "P005"
+      ]
+    },
+    {
+      "name": "Communication",
+      "summary": "Communication as a core part of delivery, not an afterthought.",
+      "projectIds": [
+        "P006"
+      ]
+    },
+    {
+      "name": "Continuous Learning",
+      "summary": "A mindset of growth that keeps the professional story moving forward.",
+      "projectIds": [
+        "AI Academy"
+      ]
+    }
+  ],
+  "learning": [
+    {
+      "title": "AI Academy",
+      "subtitle": "Enterprise AI, Agentic Systems & Responsible AI",
+      "duration": "6 weeks",
+      "type": "Professional Development",
+      "summary": "A hands-on intensive program focused on Enterprise AI delivery, governance-first design and executive AI adoption framing.",
+      "bullets": [
+        "RAG, copilots and agent-based patterns",
+        "Responsible AI, transparency and human oversight",
+        "Executive simulations and business value framing",
+        "Cross-functional collaboration and hackathon delivery"
+      ],
+      "note": "This sits in Professional Development, not as a job role. It broadened my perspective on how AI is delivered in enterprise environments."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Live site",
+      "copy": "Career OS on GitHub Pages",
+      "href": "https://lysolha-ai.github.io/career-os/",
+      "kind": "link"
+    },
+    {
+      "title": "Portfolio workbook",
+      "copy": "Private working file",
+      "href": "#",
+      "kind": "placeholder"
+    },
+    {
+      "title": "CV",
+      "copy": "To be added",
+      "href": "#",
+      "kind": "placeholder"
+    },
+    {
+      "title": "LinkedIn",
+      "copy": "Add your public profile link",
+      "href": "#",
+      "kind": "placeholder"
+    }
+  ],
   "projects": [
     {
       "Project ID": "P001",
@@ -220,68 +669,6 @@
       "PMI Process Groups": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"
     }
   ],
-  "references": [
-    {
-      "Project ID": "P001",
-      "Primary Project Reference": "Faycel Aridhi",
-      "Position": "Delivery Manager",
-      "Customer": "Hydro AS",
-      "Supporting Evidence": "RFS Tracker, SoW, DOU, PDR, Weekly Status Reports, Customer Emails",
-      "Systems / Tools": "RFS Tool, Lotus Notes/Outlook, Internal PM tools",
-      "Reference Available": "Yes",
-      "Notes": "First formal PM role. Portfolio of ~40 RFS projects."
-    },
-    {
-      "Project ID": "P002",
-      "Primary Project Reference": "Faycel Aridhi",
-      "Position": "Delivery Manager",
-      "Customer": "Hydro AS",
-      "Supporting Evidence": "Publicly documented Hydro cyberattack (March 2019); assignment to Hydro recovery team; personal project history",
-      "Systems / Tools": "IBM collaboration tools; recovery coordination meetings; status reporting",
-      "Reference Available": "Yes",
-      "Notes": "Dedicated full-time crisis recovery assignment. One of three IBM Project Managers coordinating IBM recovery activities."
-    },
-    {
-      "Project ID": "P003",
-      "Primary Project Reference": "Regis Ronco",
-      "Position": "Transition Leader / Transition Project Manager",
-      "Customer": "Carrefour",
-      "Supporting Evidence": "Project Definition Reports (PDR), Kick-off presentations, KT plans and trackers, Governance presentations, Meeting minutes, Transition schedules, Weekly highlights recognition, Project emails.",
-      "Systems / Tools": "IBM Box, Google Drive, WebEx, Lotus Notes/Outlook, KT Tracker, Project Plans, PDR repository",
-      "Reference Available": "Yes",
-      "Notes": "LinkedIn Recommendation available. Rehired by the same manager for Kyndryl CMA transition program several years later. Managed multiple transition workstreams within the Carrefour ARGO \"Move to India\" program. Author of multiple PDRs and governance documentation. Recognized by IBM T&T leadership for successful project delivery."
-    },
-    {
-      "Project ID": "P004",
-      "Primary Project Reference": "Michael P. Schmidt",
-      "Position": "Systems Management Tooling Tower Lead / Senior Project Manager",
-      "Customer": "Lufthansa",
-      "Supporting Evidence": "Project Definition Report (author), executive weekly status reports, project plans, WBS, organization chart, meeting minutes, scope workshops, architecture workshops, decision logs, project schedules, dependency tracking, executive reporting.",
-      "Systems / Tools": "Box, WebEx, Outlook, Excel, PowerPoint, Project Plans, MCMP, HP OBR, AIOps, RAID Logs",
-      "Reference Available": "Yes",
-      "Notes": "Author of the MCMP AIOps Reporting Migration PDR. Named Project Manager for Workstream 6.7 in the Lufthansa FITO2 organization. Frequently acted as deputy for Michael Schmidt during absences."
-    },
-    {
-      "Project ID": "P005",
-      "Primary Project Reference": "Sudipta Ganguly",
-      "Position": "Transformation Program Lead / Service Management Integration Lead",
-      "Customer": "Lufthansa",
-      "Supporting Evidence": "Billing & Consumption PDR, weekly executive status reports, customer meeting minutes, handover documentation, project one-pagers, stakeholder lists, release documentation, ServiceNow planning, project tracking files.",
-      "Systems / Tools": "ServiceNow, MCMP, Excel, Outlook, WebEx, Box, Project Tracker, Weekly Reports",
-      "Reference Available": "Yes",
-      "Notes": "Took over the Billing & Consumption workstream after the Reporting Migration reached a stable phase. Coordinated business, finance and technical stakeholders, customer governance, invoicing processes and ServiceNow integration. Customer requested continuity of project leadership when reassignment was planned, demonstrating stakeholder trust."
-    },
-    {
-      "Project ID": "P006",
-      "Primary Project Reference": "Klaudia Smolinska",
-      "Position": "PMO Lead – Lighthouse 2 Transformation Program",
-      "Customer": "Luminor",
-      "Supporting Evidence": "Enterprise Communication Plan, Go-Live communication templates, Migration Communication Framework, Communication Governance documents, Release Calendar, Change Calendar, Communication Tracker, Go-Live Tracker, Welcome Pack, customer notifications, migration event communication templates.",
-      "Systems / Tools": "Microsoft Teams, Outlook, PowerPoint, Excel, Confluence, Box, ServiceNow, Change Calendar, Communication Tracker, Go-Live Tracker",
-      "Reference Available": "Yes",
-      "Notes": "Led the Communication Management workstream for the Lighthouse 2 transformation program. Developed communication governance, migration communication strategy, Go-Live communication, release calendars, stakeholder communication plans and customer communication processes supporting multiple transformation workstreams across IBM, Kyndryl and Luminor. Member of the official Lighthouse 2 Communication Coordination Team together with Luminor Communication and PMO leadership."
-    }
-  ],
   "achievements": [
     {
       "Achievement ID": "A001",
@@ -489,6 +876,68 @@
       "Why it Matters": "Demonstrates the ability to drive adoption and stakeholder alignment during enterprise transformation.",
       "Career Impact": "Built the organizational change management experience that later complemented my work in Enterprise AI adoption and Responsible AI governance.",
       "Reusable for": "LinkedIn • About • AI Transformation • Interviews"
+    }
+  ],
+  "references": [
+    {
+      "Project ID": "P001",
+      "Primary Project Reference": "Delivery management and customer-side verification",
+      "Position": "Delivery Manager",
+      "Customer": "Hydro AS",
+      "Supporting Evidence": "RFS tracker, SoW, DOU, PDR, weekly status reports and customer communications",
+      "Systems / Tools": "RFS tool, Lotus Notes / Outlook, internal PM tools",
+      "Reference Available": "Yes",
+      "Notes": "First formal PM role. Portfolio of approximately 40 RFS projects."
+    },
+    {
+      "Project ID": "P002",
+      "Primary Project Reference": "Delivery management and crisis recovery verification",
+      "Position": "Delivery Manager",
+      "Customer": "Hydro AS",
+      "Supporting Evidence": "Publicly documented cyberattack, account assignment and recovery coordination notes",
+      "Systems / Tools": "IBM collaboration tools, recovery coordination meetings, status reporting",
+      "Reference Available": "Yes",
+      "Notes": "Dedicated full-time crisis recovery assignment. One of three IBM Project Managers supporting recovery."
+    },
+    {
+      "Project ID": "P003",
+      "Primary Project Reference": "Transition program leadership and delivery recognition",
+      "Position": "Transition Leader / Transition Project Manager",
+      "Customer": "Carrefour",
+      "Supporting Evidence": "PDRs, kick-off presentations, KT plans and trackers, governance materials, meeting minutes and recognition messages",
+      "Systems / Tools": "IBM Box, Google Drive, WebEx, Lotus Notes / Outlook, KT tracker and project plans",
+      "Reference Available": "Yes",
+      "Notes": "Managed multiple transition workstreams within the Carrefour ARGO move-to-India program."
+    },
+    {
+      "Project ID": "P004",
+      "Primary Project Reference": "Tower lead project leadership and executive governance",
+      "Position": "Systems Management Tooling Tower Lead / Senior Project Manager",
+      "Customer": "Lufthansa",
+      "Supporting Evidence": "Project definition report, executive status reports, project plans, organization chart and dependency tracking",
+      "Systems / Tools": "Box, WebEx, Outlook, Excel, PowerPoint, project plans, MCMP and RAID logs",
+      "Reference Available": "Yes",
+      "Notes": "Project governance and executive reporting were core parts of the role."
+    },
+    {
+      "Project ID": "P005",
+      "Primary Project Reference": "Program leadership and customer stakeholder coordination",
+      "Position": "Project Manager",
+      "Customer": "Lufthansa",
+      "Supporting Evidence": "Billing & Consumption PDR, weekly reports, handover documents and customer workshops",
+      "Systems / Tools": "ServiceNow, MCMP, Excel, Outlook, WebEx, Box and project tracker",
+      "Reference Available": "Yes",
+      "Notes": "Took over after the reporting migration workstream stabilized and maintained delivery continuity."
+    },
+    {
+      "Project ID": "P006",
+      "Primary Project Reference": "PMO and communication governance verification",
+      "Position": "PMO / Transformation Communication Manager",
+      "Customer": "Luminor",
+      "Supporting Evidence": "Communication plan, migration communication templates, Go-Live notices, change calendars and tracker artifacts",
+      "Systems / Tools": "Microsoft Teams, Outlook, PowerPoint, Excel, Confluence, Box, ServiceNow and communication trackers",
+      "Reference Available": "Yes",
+      "Notes": "Led communication governance for Lighthouse 2 transformation workstreams."
     }
   ]
 }

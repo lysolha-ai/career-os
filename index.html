@@ -3,815 +3,947 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Career OS — Olha Lys</title>
-  <meta name="description" content="Public workbook-based career portfolio built as a clean, clickable dashboard." />
+  <title>Olha Lys — Career OS</title>
+  <meta name="description" content="A minimalist executive portfolio that tells the story of Olha Lys through projects, reflection and continuous learning." />
+  <meta name="color-scheme" content="light dark" />
   <style>
     :root {
-      --bg: #0b1020;
-      --bg2: #0f172a;
-      --panel: rgba(14, 20, 39, 0.78);
-      --panel-strong: rgba(16, 24, 48, 0.92);
-      --card: rgba(19, 28, 56, 0.96);
-      --line: rgba(148, 163, 184, 0.16);
-      --text: #e5eefb;
-      --muted: #9fb0d0;
-      --accent: #7c3aed;
-      --accent2: #14b8a6;
-      --accent3: #f59e0b;
-      --good: #22c55e;
-      --warn: #f59e0b;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 22px;
-      --radius-sm: 14px;
-      --maxw: 1320px;
+      --bg: #f5f0e8;
+      --bg2: #fbf8f3;
+      --panel: rgba(255,255,255,.78);
+      --panel-strong: rgba(255,255,255,.92);
+      --card: rgba(255,255,255,.98);
+      --text: #10233f;
+      --muted: #56657e;
+      --subtle: #7d8798;
+      --line: rgba(16,35,63,.10);
+      --line-strong: rgba(16,35,63,.16);
+      --accent: #163b67;
+      --accent-2: #8a6d2d;
+      --accent-3: #2f6b57;
+      --shadow: 0 22px 60px rgba(16,35,63,.08);
+      --shadow-strong: 0 20px 40px rgba(16,35,63,.14);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --content: min(1320px, calc(100vw - 32px));
     }
-    [data-theme="light"] {
-      --bg: #eef3fb;
-      --bg2: #f8fbff;
-      --panel: rgba(255,255,255,0.78);
-      --panel-strong: rgba(255,255,255,0.94);
-      --card: rgba(255,255,255,0.98);
-      --line: rgba(15, 23, 42, 0.10);
-      --text: #0f172a;
-      --muted: #475569;
-      --shadow: 0 20px 45px rgba(15,23,42,.10);
+    [data-theme="dark"] {
+      --bg: #09111f;
+      --bg2: #101a2d;
+      --panel: rgba(14,24,42,.76);
+      --panel-strong: rgba(15,26,46,.94);
+      --card: rgba(18,29,50,.98);
+      --text: #f4f7fb;
+      --muted: #c5cfde;
+      --subtle: #97a6ba;
+      --line: rgba(224,234,255,.10);
+      --line-strong: rgba(224,234,255,.18);
+      --accent: #dce8ff;
+      --accent-2: #d8bb7f;
+      --accent-3: #8ed0be;
+      --shadow: 0 22px 60px rgba(0,0,0,.34);
+      --shadow-strong: 0 20px 40px rgba(0,0,0,.38);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(1000px 500px at 15% -10%, rgba(124, 58, 237, .24), transparent 60%),
-        radial-gradient(900px 500px at 90% 0%, rgba(20, 184, 166, .18), transparent 55%),
+        radial-gradient(1000px 500px at 12% -10%, rgba(22,59,103,.10), transparent 50%),
+        radial-gradient(800px 460px at 100% 0%, rgba(138,109,45,.10), transparent 48%),
         linear-gradient(180deg, var(--bg), var(--bg2));
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       min-height: 100vh;
     }
     a { color: inherit; text-decoration: none; }
-    .wrap { width: min(var(--maxw), calc(100% - 32px)); margin: 0 auto; }
+    button, input { font: inherit; }
+    ::selection { background: rgba(22,59,103,.18); }
+    .wrap { width: var(--content); margin: 0 auto; }
+    .shell { padding-bottom: 52px; }
+
     .topbar {
-      position: sticky; top: 0; z-index: 40;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(180deg, rgba(4, 8, 22, .70), rgba(4, 8, 22, .36));
+      position: sticky; top: 0; z-index: 60;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(180deg, rgba(245,240,232,.9), rgba(245,240,232,.62));
       border-bottom: 1px solid var(--line);
     }
-    [data-theme="light"] .topbar {
-      background: linear-gradient(180deg, rgba(245,248,255,.82), rgba(245,248,255,.58));
+    [data-theme="dark"] .topbar {
+      background: linear-gradient(180deg, rgba(9,17,31,.9), rgba(9,17,31,.66));
     }
     .topbar-inner {
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      padding: 14px 0;
+      padding: 16px 0;
     }
     .brand {
-      display: flex; align-items: center; gap: 14px; min-width: 0;
+      display: flex; flex-direction: column; gap: 4px; min-width: 0;
     }
-    .brand-mark {
-      width: 44px; height: 44px; border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: grid; place-items: center; box-shadow: var(--shadow);
-      font-size: 22px;
+    .brand .name {
+      display: inline-flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 650;
+      letter-spacing: .02em;
     }
-    .brand h1 { margin: 0; font-size: 18px; letter-spacing: .2px; }
-    .brand p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
-    .nav {
-      display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end;
+    .brand .name::before {
+      content: ""; width: 12px; height: 12px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 5px rgba(22,59,103,.08);
     }
-    .nav a, .toggle-btn {
-      padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line);
-      background: rgba(255,255,255,.03); color: var(--text); font-size: 13px;
-      transition: .2s ease; cursor: pointer;
+    .brand .meta { color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    .nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a, .nav button {
+      appearance: none; border: 1px solid var(--line); background: rgba(255,255,255,.03);
+      color: var(--text); border-radius: 999px; padding: 10px 14px; font-size: 13px; cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+      white-space: nowrap;
     }
-    .nav a:hover, .toggle-btn:hover { transform: translateY(-1px); border-color: rgba(124,58,237,.45); }
+    .nav a:hover, .nav button:hover, .chip:hover, .pill:hover, .btn:hover { transform: translateY(-1px); border-color: var(--line-strong); box-shadow: var(--shadow); }
 
     .hero {
-      margin: 24px 0 18px;
-      padding: 26px;
+      margin-top: 24px;
       border: 1px solid var(--line);
-      background: linear-gradient(160deg, rgba(124,58,237,.16), rgba(20,184,166,.08) 35%, var(--panel));
-      border-radius: calc(var(--radius) + 8px);
+      border-radius: calc(var(--radius-xl) + 6px);
+      background:
+        linear-gradient(140deg, rgba(22,59,103,.06), rgba(138,109,45,.05) 34%, rgba(255,255,255,.25)),
+        var(--panel);
       box-shadow: var(--shadow);
       overflow: hidden;
       position: relative;
     }
-    .hero:before {
-      content: ""; position: absolute; inset: -1px;
-      background: radial-gradient(circle at 80% 15%, rgba(20,184,166,.18), transparent 25%),
-                  radial-gradient(circle at 20% 20%, rgba(124,58,237,.18), transparent 24%);
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(600px 180px at 18% 10%, rgba(22,59,103,.10), transparent 65%),
+        radial-gradient(500px 160px at 95% 8%, rgba(138,109,45,.10), transparent 60%);
       pointer-events: none;
     }
-    .hero-grid { display: grid; grid-template-columns: 1.3fr .9fr; gap: 18px; position: relative; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px;
+      padding: 24px; position: relative;
+    }
     .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line);
-      background: rgba(255,255,255,.04); color: var(--muted); font-size: 12px;
-      margin-bottom: 14px;
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px;
+      border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.26);
+      color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
     }
-    .hero h2 { font-size: clamp(36px, 5vw, 64px); line-height: .95; margin: 0; }
-    .hero .subtitle { margin: 10px 0 12px; font-size: clamp(15px, 2vw, 20px); color: #cbd5e1; max-width: 60ch; }
-    [data-theme="light"] .hero .subtitle { color: #334155; }
-    .hero .description { color: var(--muted); max-width: 65ch; line-height: 1.65; margin: 0 0 18px; }
-    .hero-actions { display:flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+    .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 5px rgba(138,109,45,.12); }
+    .hero h1 {
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      font-size: clamp(38px, 6vw, 76px); line-height: .94; letter-spacing: -.03em; margin: 14px 0 10px;
+      max-width: 11ch;
+    }
+    .hero .subtitle {
+      font-size: clamp(16px, 2.05vw, 22px); line-height: 1.45; margin: 0 0 12px; max-width: 53ch; color: var(--text);
+    }
+    .hero .lede { max-width: 60ch; color: var(--muted); line-height: 1.7; margin: 0 0 20px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
     .btn {
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 12px 16px; border-radius: 14px; border: 1px solid var(--line);
-      background: rgba(255,255,255,.04); color: var(--text); font-weight: 600; font-size: 14px;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      display:inline-flex; align-items:center; justify-content:center; gap: 10px; text-decoration:none;
+      padding: 13px 18px; border-radius: 999px; border: 1px solid var(--line);
+      background: rgba(255,255,255,.48); color: var(--text); font-weight: 640; font-size: 14px; cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
     }
-    .btn:hover { transform: translateY(-1px); border-color: rgba(124,58,237,.45); background: rgba(124,58,237,.12); }
-    .btn.primary { background: linear-gradient(135deg, var(--accent), #4f46e5); border-color: transparent; }
-    .btn.primary:hover { background: linear-gradient(135deg, #8b5cf6, #4338ca); }
-    .hero-meta {
-      display: grid; gap: 12px;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      align-content: start;
-    }
-    .stat {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      padding: 16px;
-      min-height: 108px;
-    }
-    .stat .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
-    .stat .value { font-size: 28px; font-weight: 800; margin: 6px 0 0; }
-    .stat .note { margin-top: 4px; font-size: 13px; color: var(--muted); }
-    .hero-mini {
-      grid-column: 1 / -1;
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 12px;
-    }
-    .pill {
-      display:inline-flex; align-items:center; gap: 8px; padding: 8px 12px; border-radius: 999px;
-      background: rgba(255,255,255,.05); border: 1px solid var(--line); color: var(--muted); font-size: 13px;
-    }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), #254f85); color: #fff; border-color: transparent; }
+    .btn.secondary { background: rgba(255,255,255,.28); }
+    [data-theme="dark"] .btn.primary { background: linear-gradient(135deg, #dce8ff, #a9c5ff); color: #0b1020; }
+    [data-theme="dark"] .btn.secondary { background: rgba(255,255,255,.04); }
 
-    section { margin: 22px 0; }
+    .hero-right {
+      display: grid; gap: 14px; align-content: start;
+    }
+    .portrait {
+      border-radius: 26px; border: 1px solid var(--line); background: var(--panel-strong);
+      box-shadow: var(--shadow-strong); overflow: hidden; min-height: 380px; position: relative;
+      isolation: isolate;
+    }
+    .portrait::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(240px 240px at 68% 18%, rgba(255,255,255,.10), transparent 52%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+      pointer-events: none;
+    }
+    .portrait-fallback, .portrait img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .portrait-fallback {
+      min-height: 380px; padding: 22px; display: grid; place-items: center; text-align: center;
+      background:
+        linear-gradient(180deg, rgba(22,59,103,.06), rgba(138,109,45,.04)),
+        radial-gradient(circle at 22% 20%, rgba(255,255,255,.55), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,.20), rgba(255,255,255,.02));
+    }
+    .portrait-card {
+      width: min(100%, 350px);
+      border: 1px solid var(--line); border-radius: 28px;
+      background: rgba(255,255,255,.72); padding: 18px;
+      box-shadow: 0 14px 36px rgba(16,35,63,.10);
+    }
+    [data-theme="dark"] .portrait-card { background: rgba(8,13,23,.50); }
+    .portrait-art {
+      height: 220px; border-radius: 24px; overflow: hidden; position: relative;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,.08)),
+        radial-gradient(circle at 65% 30%, rgba(255,214,170,.30), transparent 22%),
+        radial-gradient(circle at 22% 70%, rgba(22,59,103,.18), transparent 24%),
+        linear-gradient(135deg, rgba(22,59,103,.08), rgba(138,109,45,.08));
+    }
+    .portrait-art::before {
+      content: ""; position: absolute; inset: 18px;
+      border-radius: 22px; border: 1px solid rgba(16,35,63,.08);
+      background:
+        radial-gradient(circle at 50% 33%, rgba(16,35,63,.20) 0 9%, transparent 10%),
+        radial-gradient(circle at 50% 51%, rgba(16,35,63,.24) 0 17%, transparent 18%),
+        radial-gradient(circle at 35% 55%, rgba(16,35,63,.20) 0 6%, transparent 7%),
+        radial-gradient(circle at 65% 55%, rgba(16,35,63,.20) 0 6%, transparent 7%),
+        linear-gradient(180deg, rgba(16,35,63,.09), rgba(16,35,63,.05));
+      opacity: .35;
+    }
+    .portrait-caption { margin-top: 14px; display: grid; gap: 6px; }
+    .portrait-caption .kicker { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
+    .portrait-caption strong { font-size: 18px; }
+    .portrait-caption p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 14px; }
+    .portrait-note { margin-top: 12px; font-size: 12px; color: var(--subtle); }
+
+    .mini-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+    .mini-card, .panel, .timeline-card, .exp-card, .highlight-card, .learning-card, .resource-card, .principle-card {
+      border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(14px); box-shadow: var(--shadow); border-radius: var(--radius-lg);
+    }
+    .mini-card { padding: 16px; min-height: 110px; position: relative; overflow: hidden; }
+    .mini-card::after {
+      content: ""; position: absolute; right: -30px; top: -30px; width: 120px; height: 120px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(22,59,103,.14), transparent 68%);
+    }
+    .mini-card .value { font-size: 28px; font-weight: 800; letter-spacing: -.03em; }
+    .mini-card .label { margin-top: 6px; color: var(--muted); line-height: 1.5; font-size: 13px; }
+    .mini-card .meta { margin-top: 8px; color: var(--subtle); font-size: 12px; text-transform: uppercase; letter-spacing: .10em; }
+
+    .section { margin-top: 28px; }
     .section-head {
-      display:flex; align-items:end; justify-content:space-between; gap: 16px; margin-bottom: 12px;
-      flex-wrap: wrap;
+      display:flex; align-items:end; justify-content:space-between; gap: 18px; margin-bottom: 12px; flex-wrap: wrap;
     }
-    .section-head h3 { margin: 0; font-size: clamp(24px, 3vw, 34px); }
-    .section-head p { margin: 0; color: var(--muted); max-width: 68ch; line-height: 1.5; }
-    .panel {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      backdrop-filter: blur(14px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
+    .section-head h2 {
+      margin: 0; font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif; font-size: clamp(26px, 3vw, 38px); letter-spacing: -.03em;
     }
-    .roadmap {
-      display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 10px;
-    }
-    .roadmap-card {
-      position: relative; overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 18px; padding: 16px 14px 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      min-height: 176px;
-    }
-    .roadmap-card:before {
-      content: attr(data-step); position: absolute; top: 12px; right: 12px;
-      font-size: 12px; font-weight: 700; color: rgba(255,255,255,.5);
-    }
-    [data-theme="light"] .roadmap-card:before { color: rgba(15,23,42,.35); }
-    .roadmap-card .year { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
-    .roadmap-card h4 { margin: 0 0 6px; font-size: 18px; }
-    .roadmap-card .role { font-weight: 700; margin: 0 0 8px; }
-    .roadmap-card .desc { font-size: 13px; line-height: 1.55; color: var(--muted); margin: 0; }
-    .roadmap-card .tag { display:inline-flex; margin-top: 12px; padding: 6px 10px; border-radius: 999px; background: rgba(124,58,237,.12); border: 1px solid rgba(124,58,237,.2); font-size: 12px; }
-    .roadline {
-      position: relative; height: 14px; margin: 20px 8px 0;
-      background: linear-gradient(90deg, rgba(124,58,237,.45), rgba(20,184,166,.45), rgba(245,158,11,.45));
-      border-radius: 999px;
-    }
-    .roadline .node {
-      position: absolute; top: 50%; transform: translate(-50%, -50%);
-      width: 14px; height: 14px; border-radius: 50%; background: white; border: 4px solid var(--accent);
-      box-shadow: 0 0 0 5px rgba(124,58,237,.15);
-    }
-    .roadline .node:nth-child(2){ left: 4%; }
-    .roadline .node:nth-child(3){ left: 17%; border-color: var(--accent2); box-shadow: 0 0 0 5px rgba(20,184,166,.15); }
-    .roadline .node:nth-child(4){ left: 35%; border-color: #22c55e; box-shadow: 0 0 0 5px rgba(34,197,94,.15); }
-    .roadline .node:nth-child(5){ left: 53%; border-color: #8b5cf6; box-shadow: 0 0 0 5px rgba(139,92,246,.15); }
-    .roadline .node:nth-child(6){ left: 71%; border-color: #f97316; box-shadow: 0 0 0 5px rgba(249,115,22,.15); }
-    .roadline .node:nth-child(7){ left: 88%; border-color: #f59e0b; box-shadow: 0 0 0 5px rgba(245,158,11,.15); }
-    .road-legend { display:grid; grid-template-columns: repeat(6,1fr); gap:10px; margin-top: 8px; font-size: 12px; color: var(--muted); }
+    .section-head p { margin: 0; max-width: 78ch; color: var(--muted); line-height: 1.65; }
 
-    .controls {
-      display:flex; flex-wrap: wrap; gap: 10px; align-items:center; margin-bottom: 14px;
+    .welcome {
+      padding: 24px; display: grid; grid-template-columns: 1fr .8fr; gap: 18px;
+      align-items: start;
     }
+    .welcome .letter {
+      padding: 22px; background: rgba(255,255,255,.50); border-radius: 24px; border: 1px solid var(--line);
+      line-height: 1.8; color: var(--muted);
+    }
+    .welcome .letter strong { color: var(--text); }
+    .welcome .principles { display:grid; gap: 12px; }
+    .principle-card { padding: 16px; }
+    .principle-card strong { display:block; margin-bottom: 6px; }
+    .principle-card p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 14px; }
+
+    .timeline { display: grid; gap: 14px; position: relative; }
+    .timeline::before {
+      content: ""; position: absolute; left: 23px; top: 18px; bottom: 18px; width: 2px;
+      background: linear-gradient(180deg, rgba(22,59,103,.0), rgba(22,59,103,.38), rgba(138,109,45,.28), rgba(22,59,103,.0));
+    }
+    .timeline-card {
+      position: relative; padding: 18px 18px 18px 68px; overflow: hidden;
+    }
+    .timeline-card::before {
+      content: ""; position: absolute; left: 16px; top: 24px; width: 16px; height: 16px; border-radius: 50%;
+      border: 4px solid var(--card); background: var(--accent); box-shadow: 0 0 0 6px rgba(22,59,103,.10);
+    }
+    .timeline-card .meta { display:flex; gap: 10px; flex-wrap: wrap; align-items:center; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .10em; }
+    .timeline-card h3 { margin: 8px 0 6px; font-size: 24px; letter-spacing: -.02em; }
+    .timeline-card .subtitle { margin: 0 0 10px; color: var(--text); font-weight: 650; }
+    .timeline-card blockquote { margin: 12px 0; padding: 14px 16px; border-left: 3px solid var(--accent-2); background: rgba(138,109,45,.05); border-radius: 12px; color: var(--text); font-style: italic; line-height: 1.7; }
+    .timeline-card p { margin: 0 0 12px; color: var(--muted); line-height: 1.75; }
+    .timeline-card .chips { display:flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .chip, .pill, .tag {
+      display:inline-flex; align-items:center; gap: 8px; border: 1px solid var(--line); background: rgba(255,255,255,.22); color: var(--text); border-radius: 999px; padding: 8px 12px; font-size: 13px; cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .chip.active, .pill.active { background: linear-gradient(135deg, rgba(22,59,103,.12), rgba(138,109,45,.10)); border-color: var(--line-strong); }
+    .tag { font-size: 12px; padding: 6px 10px; cursor: default; }
+
+    .controls { display:flex; flex-wrap: wrap; gap: 10px; align-items:center; margin-bottom: 14px; }
     .search {
-      flex: 1 1 280px; display:flex; align-items:center; gap:10px;
-      padding: 12px 14px; border: 1px solid var(--line); background: rgba(255,255,255,.04);
-      border-radius: 14px;
+      flex: 1 1 320px; display:flex; align-items:center; gap: 10px; padding: 12px 14px;
+      border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.36);
     }
     .search input {
-      width: 100%; border: 0; outline: 0; background: transparent; color: var(--text); font-size: 14px;
+      width: 100%; border: 0; outline: none; background: transparent; color: var(--text); font-size: 14px;
     }
+    .search .icon { opacity: .7; }
     .filter-row { display:flex; flex-wrap: wrap; gap: 8px; }
-    .chip {
-      padding: 9px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.04);
-      color: var(--text); font-size: 13px; cursor: pointer; transition: .2s ease; user-select:none;
-    }
-    .chip.active { background: linear-gradient(135deg, rgba(124,58,237,.8), rgba(79,70,229,.8)); border-color: transparent; }
-    .chip:hover { transform: translateY(-1px); }
 
-    .grid-projects {
-      display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px;
+    .experience-grid { display:grid; gap: 14px; }
+    .exp-card { overflow:hidden; }
+    .exp-card summary {
+      list-style: none; cursor: pointer; padding: 20px 20px 18px; outline: none;
     }
-    .project {
-      border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); overflow:hidden;
-      transition: transform .2s ease, border-color .2s ease;
+    .exp-card summary::-webkit-details-marker { display:none; }
+    .exp-head { display:flex; justify-content:space-between; gap: 18px; align-items:flex-start; }
+    .exp-kicker { color: var(--subtle); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
+    .exp-title { margin: 6px 0 8px; font-size: 22px; letter-spacing: -.02em; }
+    .exp-meta { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .exp-reflection { margin-top: 14px; color: var(--text); font-style: italic; line-height: 1.75; }
+    .exp-open {
+      flex: 0 0 auto; display:inline-flex; align-items:center; gap: 8px; padding: 10px 12px; border-radius: 999px;
+      border: 1px solid var(--line); background: rgba(255,255,255,.22); color: var(--text); font-size: 13px;
     }
-    .project:hover { transform: translateY(-2px); border-color: rgba(124,58,237,.35); }
-    .project[open] { box-shadow: 0 20px 50px rgba(0,0,0,.18); }
-    .project summary {
-      list-style:none; cursor:pointer; padding: 18px; display:flex; gap: 14px; align-items:flex-start;
+    .exp-body { padding: 0 20px 20px; display:grid; gap: 14px; }
+    .exp-stack { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+    .exp-box {
+      border: 1px solid var(--line); background: rgba(255,255,255,.22); border-radius: 18px; padding: 14px 14px 15px;
     }
-    .project summary::-webkit-details-marker { display:none; }
-    .id-badge {
-      flex: none; width: 54px; height: 54px; border-radius: 16px; display:grid; place-items:center;
-      background: linear-gradient(135deg, rgba(124,58,237,.22), rgba(20,184,166,.18)); border: 1px solid var(--line);
-      font-weight: 900; letter-spacing: .04em;
-    }
-    .proj-head { flex: 1; min-width: 0; }
-    .proj-head h4 { margin: 0; font-size: 19px; }
-    .proj-sub { color: var(--muted); font-size: 13px; margin-top: 4px; line-height: 1.45; }
-    .proj-tags { display:flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .tag2 {
-      padding: 6px 10px; border-radius: 999px; font-size: 12px; background: rgba(255,255,255,.05); border: 1px solid var(--line); color: var(--muted);
-    }
-    .tag2.accent { color: var(--text); background: rgba(124,58,237,.12); border-color: rgba(124,58,237,.20); }
-    .tag2.good { background: rgba(34,197,94,.12); border-color: rgba(34,197,94,.20); color: var(--text); }
-    .tag2.blue { background: rgba(59,130,246,.12); border-color: rgba(59,130,246,.20); color: var(--text); }
-    .tag2.orange { background: rgba(245,158,11,.12); border-color: rgba(245,158,11,.20); color: var(--text); }
-    .project-body { border-top: 1px solid var(--line); padding: 18px; display:grid; gap: 14px; }
-    .project-grid { display:grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
-    .info-box {
-      padding: 14px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.03);
-    }
-    .info-box h5 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
-    .info-box p { margin: 0; line-height: 1.6; font-size: 14px; }
-    .bar { height: 10px; border-radius: 999px; background: rgba(255,255,255,.06); overflow:hidden; }
-    .bar > span { display:block; height:100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
-    .project-foot { display:flex; flex-wrap: wrap; gap: 8px; align-items:center; justify-content:space-between; }
-    .muted { color: var(--muted); }
-    .small { font-size: 13px; }
+    .exp-box h4 { margin: 0 0 8px; font-size: 14px; text-transform: uppercase; letter-spacing: .12em; color: var(--subtle); }
+    .exp-box p { margin: 0; line-height: 1.75; color: var(--muted); }
+    .exp-footer { display:flex; flex-wrap: wrap; gap: 8px; align-items:center; justify-content:space-between; color: var(--muted); font-size: 12px; }
+    .exp-footer .evidence { padding-top: 4px; }
+    .exp-card[hidden] { display:none !important; }
+    .exp-card[open] { border-color: var(--line-strong); box-shadow: var(--shadow-strong); }
 
-    .split {
-      display:grid; grid-template-columns: 1.05fr .95fr; gap: 14px;
+    .matrix-wrap { overflow:auto; border-radius: 22px; border: 1px solid var(--line); background: rgba(255,255,255,.30); }
+    table.matrix { width: 100%; border-collapse: collapse; min-width: 880px; }
+    .matrix th, .matrix td { border-bottom: 1px solid var(--line); padding: 14px 12px; text-align: left; vertical-align: top; }
+    .matrix th { position: sticky; top: 0; z-index: 2; background: var(--panel-strong); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--subtle); }
+    .matrix td:first-child, .matrix th:first-child { position: sticky; left: 0; z-index: 3; background: var(--panel-strong); }
+    .matrix td:first-child { font-weight: 700; }
+    .matrix td { font-size: 13px; color: var(--muted); }
+    .matrix-row { cursor: pointer; }
+    .matrix-row:hover td { background: rgba(22,59,103,.04); }
+    .matrix-cell {
+      min-width: 120px; border-radius: 12px; padding: 10px 12px; text-align:center !important; color: transparent;
+      transition: .18s ease;
     }
-    .matrix-wrap { overflow:auto; border-radius: 18px; border: 1px solid var(--line); }
-    table { width:100%; border-collapse: collapse; min-width: 860px; background: var(--card); }
-    th, td { padding: 12px 12px; border-bottom: 1px solid var(--line); text-align:left; font-size: 13px; vertical-align: top; }
-    th { position: sticky; top: 0; background: rgba(10,14,30,.96); z-index: 1; }
-    [data-theme="light"] th { background: rgba(255,255,255,.96); }
-    td.center, th.center { text-align:center; }
-    .tick { width: 12px; height: 12px; border-radius: 999px; display:inline-block; background: rgba(148,163,184,.2); }
-    .tick.on { background: linear-gradient(135deg, var(--good), #16a34a); box-shadow: 0 0 0 4px rgba(34,197,94,.12); }
-    .legend { display:flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; color: var(--muted); font-size: 13px; }
-    .legend span { display:inline-flex; align-items:center; gap: 8px; }
+    .matrix-cell.match { color: var(--text); background: rgba(22,59,103,.10); border: 1px solid rgba(22,59,103,.14); font-weight: 650; }
+    .matrix-cell.dim { color: transparent; }
+    .matrix-selected .matrix-cell.match { background: linear-gradient(135deg, rgba(22,59,103,.18), rgba(138,109,45,.12)); }
+    .matrix-legend { display:flex; flex-wrap: wrap; gap: 10px; align-items:center; justify-content:space-between; margin-top: 12px; }
+    .legend { display:flex; flex-wrap: wrap; gap: 8px; }
+    .legend .pill { cursor: default; }
 
-    .achievements { display:grid; gap: 14px; }
-    .ach-group {
-      border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); overflow:hidden;
+    .highlight-grid { display:grid; gap: 12px; }
+    .highlight-group {
+      border: 1px solid var(--line); background: var(--panel); box-shadow: var(--shadow); border-radius: 22px; overflow: hidden;
     }
-    .ach-group summary {
-      cursor:pointer; list-style:none; padding: 16px 18px; display:flex; align-items:center; justify-content:space-between; gap: 12px;
+    .highlight-group summary {
+      list-style: none; cursor: pointer; padding: 18px 18px 16px; display:flex; justify-content:space-between; gap: 16px; align-items:center;
+      background: rgba(255,255,255,.10);
     }
-    .ach-group summary::-webkit-details-marker { display:none; }
-    .ach-grid { padding: 0 18px 18px; display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
-    .ach-card {
-      padding: 14px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.03);
-      min-height: 156px;
+    .highlight-group summary::-webkit-details-marker { display:none; }
+    .highlight-group h3 { margin: 0; font-size: 18px; }
+    .highlight-group .count { color: var(--muted); font-size: 13px; }
+    .highlight-list { padding: 0 18px 18px; display:grid; gap: 10px; }
+    .highlight-item {
+      border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.22); padding: 14px;
     }
-    .ach-card h5 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
-    .ach-card .title { margin: 0 0 10px; font-size: 15px; line-height: 1.55; }
-    .ach-card .meta { display:flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .highlight-item .meta { display:flex; gap: 8px; flex-wrap: wrap; align-items:center; justify-content:space-between; }
+    .highlight-item .id { font-size: 12px; color: var(--subtle); letter-spacing: .12em; text-transform: uppercase; }
+    .highlight-item .category { color: var(--muted); font-size: 12px; }
+    .highlight-item h4 { margin: 8px 0 6px; font-size: 16px; }
+    .highlight-item p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .highlight-item .impact { margin-top: 10px; color: var(--text); font-size: 14px; }
 
-    .ref-grid { display:grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
-    .ref-card {
-      padding: 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card);
+    .learning-grid { display:grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .learning-card { padding: 20px; }
+    .learning-card h3 { margin: 0 0 6px; font-size: 22px; }
+    .learning-card .meta { color: var(--subtle); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; }
+    .learning-card p { color: var(--muted); line-height: 1.75; }
+    .learning-card ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.8; }
+    .resource-grid { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+    .resource-card { padding: 18px; min-height: 150px; display:flex; flex-direction: column; gap: 10px; }
+    .resource-card .kicker { color: var(--subtle); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; }
+    .resource-card h3 { margin: 0; font-size: 18px; }
+    .resource-card p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .resource-card a { margin-top: auto; align-self:flex-start; }
+
+    .contact {
+      display:grid; grid-template-columns: 1fr .75fr; gap: 14px;
     }
-    .ref-card h4 { margin: 0 0 4px; }
-    .ref-card .role { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
-    .ref-card .note { color: var(--text); line-height: 1.6; font-size: 14px; }
-    .ref-card .evidence { margin-top: 12px; display:flex; flex-wrap: wrap; gap: 8px; }
+    .contact .message { padding: 22px; }
+    .contact .message p { color: var(--muted); line-height: 1.8; }
+    .contact .signature { margin-top: 14px; font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif; font-size: 22px; letter-spacing: -.02em; }
+    .contact .box { padding: 22px; display:grid; gap: 12px; align-content: start; }
+    .contact .box .row { display:flex; flex-wrap: wrap; gap: 10px; }
 
     .footer {
-      margin: 20px 0 40px;
-      padding: 18px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      text-align: center;
-      font-size: 13px;
+      margin: 28px 0 0; padding: 18px 0 4px; color: var(--subtle); font-size: 12px; line-height: 1.6;
+      display:flex; flex-wrap: wrap; align-items:center; justify-content:space-between; gap: 12px;
     }
-    .quote {
-      font-style: italic; color: var(--text); margin-top: 8px;
-    }
+    .footer .small { text-transform: uppercase; letter-spacing: .14em; }
 
-    @media (max-width: 1100px) {
-      .hero-grid, .split, .grid-projects, .ref-grid, .ach-grid, .project-grid { grid-template-columns: 1fr; }
-      .roadmap { grid-template-columns: repeat(2,minmax(0,1fr)); }
-      .road-legend { grid-template-columns: repeat(2,1fr); }
-      .hero-meta { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .section-card { padding: 18px; }
+    .subtle-note { color: var(--subtle); font-size: 13px; line-height: 1.7; }
+    .divider { height: 1px; background: var(--line); margin: 14px 0; }
+
+    .fade-in { opacity: 0; transform: translateY(10px); transition: opacity .55s ease, transform .55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1180px) {
+      .hero-grid, .welcome, .learning-grid, .contact { grid-template-columns: 1fr; }
+      .mini-grid, .resource-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .hero h1 { max-width: 12ch; }
+      .topbar-inner { flex-direction: column; align-items: flex-start; }
+      .nav { justify-content: flex-start; }
     }
-    @media (max-width: 720px) {
-      .wrap { width: min(calc(100% - 18px), 1320px); }
-      .hero { padding: 16px; }
-      .hero-meta { grid-template-columns: 1fr; }
-      .roadmap { grid-template-columns: 1fr; }
-      .topbar-inner { align-items: flex-start; flex-direction: column; }
-      .nav { justify-content:flex-start; }
-      .project summary { padding: 14px; }
-      .project-body, .ach-grid { padding-left: 14px; padding-right: 14px; }
+    @media (max-width: 760px) {
+      .wrap { width: min(calc(100vw - 20px), 1320px); }
+      .hero-grid { padding: 18px; }
+      .mini-grid, .resource-grid, .exp-stack { grid-template-columns: 1fr; }
+      .timeline::before { left: 18px; }
+      .timeline-card { padding-left: 54px; }
+      .timeline-card::before { left: 10px; }
+      .exp-head, .highlight-group summary { flex-direction: column; align-items: flex-start; }
+      .matrix th, .matrix td { padding: 12px 10px; }
+      .footer { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .fade-in { opacity: 1; transform: none; }
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
   <div class="topbar">
     <div class="wrap topbar-inner">
       <div class="brand">
-        <div class="brand-mark">✦</div>
-        <div>
-          <h1>Career OS</h1>
-          <p>Workbook-based public portfolio · v1.0</p>
-        </div>
+        <div class="name">Olha Lys</div>
+        <div class="meta">Senior IT Project Manager · Career OS</div>
       </div>
-      <div class="nav" role="navigation" aria-label="Primary">
-        <a href="#roadmap">Roadmap</a>
-        <a href="#projects">Projects</a>
-        <a href="#matrix">Matrix</a>
-        <a href="#achievements">Achievements</a>
-        <a href="#references">References</a>
-        <button class="toggle-btn" id="themeToggle" type="button">🌙 Theme</button>
-      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#journey">The Journey</a>
+        <a href="#experiences">Experiences</a>
+        <a href="#competencies">Competencies</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#learning">Learning</a>
+        <a href="#resources">Resources</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" type="button" aria-label="Toggle theme">☼</button>
+      </nav>
     </div>
   </div>
 
-  <main class="wrap">
-    <section class="hero panel">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">Public portfolio built from the Excel workbook only</div>
-          <h2>Olha Lys</h2>
-          <div class="subtitle">Project Delivery · Transition · Transformation · Communication</div>
-          <p class="description">A clickable dashboard that turns your workbook into a professional, recruiter-friendly portfolio. It highlights documented project delivery, crisis recovery, transition governance, enterprise transformation, and communication governance.</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#projects">Explore projects</a>
-            <a class="btn" href="#matrix">See leadership matrix</a>
-            <a class="btn" href="#achievements">View achievements</a>
+  <div class="shell wrap">
+    <main id="app" aria-live="polite">
+      <section id="home" class="hero fade-in">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow"><span class="dot"></span> Executive portfolio · Version <span id="versionLabel">2.0</span></div>
+            <h1 id="profileName">Olha Lys</h1>
+            <p class="subtitle" id="profileTitle">Senior IT Project Manager</p>
+            <p class="lede" id="profileTagline">Helping organizations deliver complex transformation through structured governance, stakeholder alignment, and dependable execution.</p>
+            <div class="hero-actions" id="heroActions"></div>
           </div>
-          <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;">
-            <span class="pill">Workbook: 5 sheets</span>
-            <span class="pill">Public-safe build</span>
-            <span class="pill">Click any project for details</span>
-            <span class="pill">Filters + search</span>
-          </div>
-        </div>
-        <div class="hero-meta">
-          <div class="stat">
-            <div class="label">Documented projects</div>
-            <div class="value">6</div>
-            <div class="note">P001–P006 from the workbook</div>
-          </div>
-          <div class="stat">
-            <div class="label">Organizations</div>
-            <div class="value">2</div>
-            <div class="note">IBM and Kyndryl</div>
-          </div>
-          <div class="stat">
-            <div class="label">Customers</div>
-            <div class="value">4</div>
-            <div class="note">Hydro, Carrefour, Lufthansa, Luminor</div>
-          </div>
-          <div class="stat">
-            <div class="label">Achievements</div>
-            <div class="value">23</div>
-            <div class="note">Captured in workbook sheet 05</div>
-          </div>
-          <div class="hero-mini">
-            <div class="stat">
-              <div class="label">Coverage</div>
-              <div class="value">2018–2023</div>
-              <div class="note">Documented portfolio span</div>
+          <div class="hero-right">
+            <div class="portrait">
+              <img id="portraitImg" src="assets/portrait.jpg" alt="Portrait of Olha Lys" hidden>
+              <div class="portrait-fallback" id="portraitFallback">
+                <div class="portrait-card">
+                  <div class="portrait-art" aria-hidden="true"></div>
+                  <div class="portrait-caption">
+                    <div class="kicker">Portrait placeholder</div>
+                    <strong>Editorial hero image</strong>
+                    <p>Drop your selected cafe portrait in <code>assets/portrait.jpg</code> and the homepage will use it automatically.</p>
+                  </div>
+                  <div class="portrait-note">Minimal. Calm. Working in a cafe. Exactly as planned.</div>
+                </div>
+              </div>
             </div>
-            <div class="stat">
-              <div class="label">Focus</div>
-              <div class="value" style="font-size:22px;">Governance</div>
-              <div class="note">Project, transition and change governance</div>
-            </div>
-            <div class="stat">
-              <div class="label">Depth</div>
-              <div class="value" style="font-size:22px;">Workbook-driven</div>
-              <div class="note">No invented projects or external sources</div>
-            </div>
+            <div class="subtle-note" id="portraitHint">The visual direction is Scandinavian executive minimalism with a working portrait, not a posed corporate headshot.</div>
           </div>
         </div>
-      </div>
-    </section>
+        <div class="mini-grid wrap" id="snapshotGrid" style="padding:0 24px 24px;"></div>
+      </section>
 
-    <section id="roadmap">
-      <div class="section-head">
-        <div>
-          <h3>Career roadmap</h3>
-          <p>A visual progression from infrastructure delivery to communication governance, based entirely on the workbook entries.</p>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="roadmap" id="roadmapGrid"></div>
-        <div class="roadline" aria-hidden="true">
-          <span class="node"></span><span class="node"></span><span class="node"></span>
-          <span class="node"></span><span class="node"></span><span class="node"></span>
-        </div>
-        <div class="road-legend" id="roadLegend"></div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="section-head">
-        <div>
-          <h3>Project portfolio</h3>
-          <p>Use the search box and filters to explore each documented project. Open a card to see the workbook-based objective, responsibilities, outputs and outcome.</p>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="controls">
-          <div class="search">
-            <span>⌕</span>
-            <input id="search" type="text" placeholder="Search by project ID, customer, role or keyword…" />
+      <section class="section fade-in" id="welcomeSection">
+        <div class="section-head">
+          <div>
+            <h2>Welcome</h2>
+            <p>A short note from me before the journey begins.</p>
           </div>
-          <div class="filter-row" id="filters"></div>
         </div>
-        <div class="grid-projects" id="projectGrid"></div>
-      </div>
-    </section>
+        <div class="welcome panel">
+          <div>
+            <div class="letter" id="welcomeLetter"></div>
+          </div>
+          <div class="principles" id="principlesGrid"></div>
+        </div>
+      </section>
 
-    <section id="matrix">
-      <div class="section-head">
-        <div>
-          <h3>Leadership competency matrix</h3>
-          <p>Derived from the workbook’s project descriptions and achievement categories. This helps you see how each project contributes to your broader leadership profile.</p>
-        </div>
-      </div>
-      <div class="split">
-        <div class="panel matrix-wrap">
-          <table id="matrixTable"></table>
+      <section class="section fade-in" id="journey">
+        <div class="section-head">
+          <div>
+            <h2>The Journey</h2>
+            <p>The story is more important than the chronology. Each chapter shows how a new experience changed the way I work.</p>
+          </div>
         </div>
         <div class="panel">
-          <h3 style="margin-top:0">Portfolio depth</h3>
-          <p class="muted small">A simple visual based on the number of documented achievements per project and the duration in months.</p>
-          <div id="depthChart"></div>
-          <div class="legend">
-            <span><i class="tick on"></i> Present in workbook evidence</span>
-            <span><i class="tick"></i> Not a primary emphasis</span>
-          </div>
-          <div style="margin-top:16px; padding:14px; border:1px solid var(--line); border-radius:16px; background: rgba(255,255,255,.03);">
-            <div class="muted small" style="text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px;">Workbook note</div>
-            <div style="line-height:1.65">The matrix is intentionally conservative. If a competency is clearly supported by the workbook, it is marked as present. If not, it remains blank rather than inferred too aggressively.</div>
-          </div>
+          <div class="timeline" id="journeyTimeline"></div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="achievements">
-      <div class="section-head">
-        <div>
-          <h3>Career achievements</h3>
-          <p>Every achievement captured in the workbook, grouped by project. These are great building blocks for your LinkedIn About section, CV bullet points and interview stories.</p>
-        </div>
-      </div>
-      <div class="achievements" id="achievementsWrap"></div>
-    </section>
-
-    <section id="references">
-      <div class="section-head">
-        <div>
-          <h3>Project references & evidence</h3>
-          <p>A cleaner public view of the reference sheet: names, roles and evidence categories without exposing private email addresses.</p>
-        </div>
-      </div>
-      <div class="ref-grid" id="referencesGrid"></div>
-    </section>
-
-    <section>
-      <div class="panel">
-        <div class="section-head" style="margin-bottom:0;">
+      <section class="section fade-in" id="experiences">
+        <div class="section-head">
           <div>
-            <h3 style="margin:0">What this build is designed to become</h3>
-            <p>Career OS is intentionally structured so you can later add a private layer, AI Academy, CMA evidence and more downloads without redesigning the whole site.</p>
+            <h2>Experiences</h2>
+            <p>Each experience follows the same structure: setting the scene, the challenge, my contribution, the outcome, and what it prepared me for next.</p>
           </div>
         </div>
-        <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:16px;">
-          <div class="stat"><div class="label">Private layer</div><div class="note" style="margin-top:8px">For internal notes, evidence and interview prep.</div></div>
-          <div class="stat"><div class="label">Public layer</div><div class="note" style="margin-top:8px">A recruiter-friendly showcase of your story.</div></div>
-          <div class="stat"><div class="label">Data-driven</div><div class="note" style="margin-top:8px">The workbook can later feed JSON automatically.</div></div>
-          <div class="stat"><div class="label">Expandable</div><div class="note" style="margin-top:8px">Add CMA, AI Academy and future work as you grow.</div></div>
+        <div class="panel">
+          <div class="controls">
+            <label class="search" aria-label="Search experiences">
+              <span class="icon">⌕</span>
+              <input id="expSearch" type="search" placeholder="Search experiences, themes or competencies" />
+            </label>
+            <div class="filter-row" id="experienceChips"></div>
+          </div>
+          <div class="experience-grid" id="experienceGrid"></div>
         </div>
-        <p class="quote">"The story is bigger than the CV. The CV is just the summary."</p>
-      </div>
-    </section>
+      </section>
 
-    <div class="footer">
-      Built from the Excel workbook you uploaded. Public build intentionally omits direct email addresses and private internal-only details.
-    </div>
-  </main>
+      <section class="section fade-in" id="competencies">
+        <div class="section-head">
+          <div>
+            <h2>Competency Matrix</h2>
+            <p>Click a competency to highlight where it shows up across the journey. This is the easiest way to see how the story connects.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="controls" style="margin-bottom: 12px;">
+            <div class="filter-row" id="competencyChips"></div>
+          </div>
+          <div class="matrix-wrap">
+            <table class="matrix" id="competencyMatrix"></table>
+          </div>
+          <div class="matrix-legend">
+            <div class="legend">
+              <span class="pill">Matched</span>
+              <span class="pill">Use the row to filter</span>
+            </div>
+            <div class="subtle-note">The matrix is a map of where each competency was shaped, not a scorecard.</div>
+          </div>
+        </div>
+      </section>
 
-  <script id="portfolio-data" type="application/json">{"meta": {"name": "Olha Lys", "headline": "Project Delivery • Transition • Transformation • Communication", "subtitle": "A public, workbook-based Career OS built from documented project inventory, summaries, PMI detail, references and achievements."}, "projects": [{"Project ID": "P001", "Company": "IBM", "Customer": "Hydro AS", "Portfolio / Engagement": "Hydro AS – RFS Infrastructure Delivery Portfolio", "Scope / Portfolio": "Managed a portfolio of ~40 customer-requested infrastructure projects (RFSs), including server builds, decommissions, database implementations, infrastructure changes, application deployments, and migration-related activities.", "Role": "RFS Project Manager", "Start": "2018-05-01", "End": "2019-04-01", "Duration (Months)": 12, "Delivery Model": "Waterfall / Hybrid", "Domain": "IT Infrastructure Services", "Project Scale / Complexity": "Portfolio of ~40 concurrent infrastructure projects"}, {"Project ID": "P002", "Company": "IBM", "Customer": "Hydro AS", "Portfolio / Engagement": "Hydro Cyberattack Recovery Response", "Scope / Portfolio": "Assigned full-time to IBM's coordinated recovery response following the March 2019 Hydro cyberattack. As one of three IBM Project Managers, coordinated cross-functional recovery activities, prioritized restoration work, managed customer communication, and supported the phased recovery of critical IT infrastructure.", "Role": "Project Manager", "Start": "2019-03-01", "End": "2019-04-01", "Duration (Months)": 1, "Delivery Model": "Crisis Management / Major Incident Response", "Domain": "Cybersecurity Incident Recovery / IT Infrastructure", "Project Scale / Complexity": "Enterprise-wide recovery effort involving multiple technical teams working 24/7 in coordination with the customer"}, {"Project ID": "P003", "Company": "IBM", "Customer": "Carrefour", "Portfolio / Engagement": "Carrefour ARGO Transition & Transformation Program", "Scope / Portfolio": "Managed multiple transition workstreams supporting the Carrefour \"Move to India\" transformation program, including VMware, Citrix, Windows Team Lead, Windows Health Check, Patching, Compliance Coordination and Governance activities. Responsible for project planning, stakeholder coordination, knowledge transfer, cutover planning, governance, RAID management and successful service transition.", "Role": "T&T Project Manager", "Start": "2020-04-01", "End": "2020-12-01", "Duration (Months)": 9, "Delivery Model": "Hybrid (Waterfall + Agile)", "Domain": "IT Service Transition & Transformation", "Project Scale / Complexity": "Multi-workstream international transition program involving France, Czech Republic, Poland and India, contributing to the successful transition of 132 FTE with no client service impact."}, {"Project ID": "P004", "Company": "Kyndryl", "Customer": "Lufthansa", "Portfolio / Engagement": "Lufthansa FITO2 – MCMP AIOps Reporting Migration", "Scope / Portfolio": "Led the migration of enterprise operational reporting from HP OBR to the MCMP AIOps reporting platform as part of the Lufthansa FITO2 transformation program. Responsible for project governance, scope definition, executive reporting, stakeholder coordination, dependency management, solution planning, migration oversight and business readiness across multiple technical teams.", "Role": "Transition Project Manager", "Start": "2021-01-01", "End": "2022-09-01", "Duration (Months)": 20, "Delivery Model": "Hybrid (Waterfall + Agile)", "Domain": "Enterprise Transformation • AIOps • IT Service Management", "Project Scale / Complexity": "Enterprise reporting migration within the Lufthansa FITO2 transformation program involving architects, AIOps specialists, account teams, BAU representatives and multiple dependent projects across the System Management Tooling tower."}, {"Project ID": "P005", "Company": "Kyndryl", "Customer": "Lufthansa", "Portfolio / Engagement": "Lufthansa FITO2 – Billing & Consumption", "Scope / Portfolio": "Coordinated the transition and adaptation of Lufthansa FITO I Billing & Consumption processes to the FITO II operating model. Managed invoicing, consumption metering, ServiceNow integration, stakeholder alignment, business process coordination and governance across commercial, financial and technical teams.", "Role": "Transition Project Manager", "Start": "2022-06-01", "End": "2022-09-01", "Duration (Months)": 4, "Delivery Model": "Hybrid (Agile + Waterfall)", "Domain": "Business Process Transformation • IT Service Management • ServiceNow • Commercial Operations", "Project Scale / Complexity": "Cross-functional transformation project involving Lufthansa business representatives, commercial teams, finance, architects, ServiceNow specialists and multiple FITO2 workstreams supporting implementation of new Billing & Consumption processes."}, {"Project ID": "P006", "Company": "Kyndryl", "Customer": "Luminor", "Portfolio / Engagement": "Lighthouse 2 – Transformation Communication & Change Management", "Scope / Portfolio": "Led communication governance for the Lighthouse 2 enterprise transformation program, coordinating internal and external communication strategies, stakeholder engagement, migration communication, change calendars, Go-Live communication, hypercare communication and executive reporting across multiple transformation workstreams supporting business transformation, AWS migration and technology modernization.", "Role": "Transformation Communication Manager", "Start": "2022-09-01", "End": "2023-09-01", "Duration (Months)": 12, "Delivery Model": "Hybrid", "Domain": "Enterprise Transformation • Change Management • Executive Communication", "Project Scale / Complexity": "Enterprise-wide transformation communication supporting multiple business and technology workstreams, customer communication, migration events and change governance across Luminor, IBM and Kyndryl organizations."}], "summary": [{"ID": "P001", "Business Objective": "Deliver infrastructure requests for Hydro AS", "Scope": "Portfolio of ~40 RFS projects", "Responsibilities": "Planned, coordinated, executed, monitored and closed infrastructure projects", "Deliverables": "Server builds, decommissions, SoW, PDR", "Achievements": "Successfully delivered ~40 concurrent infrastructure projects", "Relevance": "Project Management • Infrastructure • Governance"}, {"ID": "P002", "Business Objective": "Coordinate IBM's infrastructure recovery activities following the Hydro cyberattack to support the phased restoration of critical business services.", "Scope": "Enterprise-wide cyber recovery involving multiple cross-functional recovery teams operating 24/7.", "Responsibilities": "Coordinated recovery activities, prioritized restoration work, managed stakeholder communication, aligned technical teams, tracked recovery progress and supported executive reporting during the crisis response.", "Deliverables": "Recovery coordination, restoration planning, stakeholder communication, recovery tracking, status reporting.", "Achievements": "Served as one of three IBM Project Managers dedicated full-time to coordinating IBM's recovery response during one of the largest publicly reported ransomware incidents affecting an industrial enterprise.", "Relevance": "Crisis Management • Stakeholder Management • Business Continuity • Leadership Under Pressure"}, {"ID": "P003", "Business Objective": "Successfully transition multiple IT infrastructure services from European delivery centers to India while ensuring knowledge transfer, operational readiness, governance compliance, and uninterrupted customer service.", "Scope": "Managed multiple transition workstreams including VMware, Citrix, Windows Team Lead, Windows Health Check, Patching, Compliance Coordination and governance activities as part of the Carrefour ARGO \"Move to India\" transformation program.", "Responsibilities": "Planned and coordinated transition projects; organized project kick-offs; developed Project Definition Reports (PDRs); managed stakeholders, RAID logs, schedules, knowledge transfer, shadow mode, cutover, governance, risks, issues, dependencies, project reporting and customer communication across international teams.", "Deliverables": "Project Definition Reports (PDRs), transition plans, KT plans, governance documentation, RAID logs, meeting minutes, stakeholder communication, project schedules, cutover plans, acceptance documentation, project closure artifacts.", "Achievements": "Successfully contributed to the Carrefour ARGO transformation program by coordinating multiple transition workstreams that supported the successful transfer of 132 FTE to India with no client service disruption. The project team achieved key contractual milestones despite COVID-19 constraints and received formal recognition from IBM Transition & Transformation leadership.", "Relevance": "Transition Management • Program Governance • Stakeholder Management • Knowledge Transfer • International Delivery • Risk Management • Change Management • Project Governance"}, {"ID": "P004", "Business Objective": "Replace the legacy HP OBR reporting solution with the MCMP AIOps Reporting platform to modernize operational reporting, improve reporting capabilities, and support Lufthansa's FITO2 transformation program.", "Scope": "Managed the end-to-end reporting migration project, including solution planning, scope definition, stakeholder alignment, architecture coordination, dependency management, report migration planning, testing, deployment, education and business readiness.", "Responsibilities": "Developed and maintained the Project Definition Report (PDR); defined project scope, milestones and acceptance criteria; coordinated architects, SMEs and AIOps teams; managed risks, dependencies and project reporting; prepared executive status reports, chaired workshops, coordinated customer communication and supported project governance throughout the project lifecycle.", "Deliverables": "Project Definition Report (PDR), project plans, executive status reports, governance documentation, migration roadmap, milestone tracking, risk management, stakeholder workshops, migration planning, education plan and Go-Live readiness.", "Achievements": "Successfully established governance for the MCMP AIOps Reporting Migration, coordinated multiple technical and business stakeholders, and delivered executive-level reporting throughout the transformation. Recognized as the Project Manager for Workstream 6.7 within the Lufthansa FITO2 Transformation Program.", "Relevance": "Enterprise Transformation • Executive Reporting • Governance • Stakeholder Management • AIOps • Risk Management • Project Leadership"}, {"ID": "P005", "Business Objective": "Establish and transition the Billing & Consumption processes for the Lufthansa FITO2 operating model, enabling accurate service consumption tracking, invoicing, and ServiceNow-based commercial processes.", "Scope": "Coordinated the transition and implementation of Billing & Consumption processes, ServiceNow integration, invoicing, consumption reporting, complaint management and stakeholder alignment across commercial, finance and technical organizations.", "Responsibilities": "Coordinated project planning, stakeholder management, customer workshops, business process alignment, ServiceNow integration activities, consumption evidence definition, invoicing process implementation, project reporting, governance meetings, release coordination and handover planning.", "Deliverables": "Billing & Consumption governance, project reporting, process documentation, meeting minutes, consumption evidence definition, ServiceNow integration support, invoicing process implementation, customer workshops, handover documentation.", "Achievements": "Successfully took over the Billing & Consumption project after the Reporting Migration workstream stabilized, maintaining project continuity while coordinating commercial, financial and technical stakeholders across the Lufthansa FITO2 program.", "Relevance": "Business Transformation • ServiceNow • Commercial Processes • Stakeholder Management • Governance • Service Integration • Change Management"}, {"ID": "P006", "Business Objective": "Establish and govern communication across the Lighthouse 2 enterprise transformation program, ensuring timely, accurate and coordinated communication for customers, business stakeholders, project teams and executive leadership throughout migration, release and Go-Live activities.", "Scope": "Managed communication governance for multiple transformation workstreams covering business transformation, AWS migration, Journey to Cloud, infrastructure modernization, major releases, migration events, hypercare, customer notifications and executive communication across Kyndryl, IBM and Luminor organizations.", "Responsibilities": "Developed communication strategies, governance processes and communication plans; coordinated stakeholders across business and technology teams; prepared Go-Live notifications, migration communication, customer messaging and executive updates; maintained release calendars, change communication, migration event coordination, hypercare communication and communication approval processes; aligned messaging across Luminor, IBM and Kyndryl organizations.", "Deliverables": "Enterprise Communication Plan, migration communication templates, Go-Live announcements, communication governance framework, release communication calendar, stakeholder communication matrix, migration event communication plans, hypercare communication plans, executive communication materials, change calendars and communication procedures.", "Achievements": "Established a structured communication governance framework supporting the Lighthouse 2 transformation program, standardizing communication across multiple project workstreams, migration waves, customer-facing activities and major releases while improving stakeholder alignment in a regulated banking environment.", "Relevance": "Enterprise Transformation • Change Management • Executive Communication • Stakeholder Management • Communication Governance • Release Management • Go-Live Readiness • Hypercare • Banking Transformation"}], "pmi": [{"Project ID": "P001", "Project Name": "Hydro AS – RFS Infrastructure Delivery Portfolio", "Organization": "IBM", "Role": "RFS Project Manager", "Dates": "May 2018 – Apr 2019", "Project Objective": "Deliver customer-requested infrastructure services through a portfolio of Request for Service (RFS) projects while meeting agreed scope, schedule and quality objectives.", "My Role": "Managed a portfolio of approximately 40 infrastructure projects, leading project planning, stakeholder coordination, customer communication, technical team alignment and project governance from initiation through successful closure.", "Responsibilities": "Defined project scope, developed delivery plans, coordinated architects and infrastructure teams, managed project schedules, risks, issues and dependencies, maintained customer communication, prepared project documentation (SoW, DOU, PDR), monitored progress and ensured successful project completion.", "Outcome": "Successfully delivered a portfolio of approximately 40 infrastructure projects, maintaining delivery quality, governance compliance and customer satisfaction while establishing my first formal Project Manager experience.", "PMI Process Groups": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"}, {"Project ID": "P002", "Project Name": "Hydro Cyberattack Recovery Response", "Organization": "IBM", "Role": "Project Manager", "Dates": "Mar 2019 – Apr 2019", "Project Objective": "Support the coordinated recovery of Hydro's critical IT infrastructure following the March 2019 cyberattack by restoring IT services, coordinating recovery activities, and enabling business continuity.", "My Role": "Assigned full-time as one of three IBM Project Managers dedicated to coordinating the infrastructure recovery effort. Led coordination across cross-functional technical teams, prioritized restoration activities, managed stakeholder communication with on-site customer representatives, tracked recovery progress, and supported decision-making throughout the recovery lifecycle.", "Responsibilities": "Coordinated recovery work across multiple technical teams; facilitated prioritization of restoration activities; maintained continuous communication with customer representatives; tracked recovery status, risks and dependencies; coordinated recovery planning meetings; supported resource alignment; monitored progress toward restoration milestones during 24/7 recovery operations.", "Outcome": "Contributed to the structured recovery of critical IT infrastructure following one of the most significant ransomware incidents affecting an industrial enterprise, enabling the phased restoration of business services through coordinated project management and stakeholder communication.", "PMI Process Groups": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"}, {"Project ID": "P003", "Project Name": "Carrefour ARGO Transition & Transformation Program", "Organization": "IBM", "Role": "Transition & Transformation Project Manager", "Dates": "Apr 2020 – Dec 2020", "Project Objective": "Lead multiple infrastructure service transition workstreams within Carrefour's ARGO \"Move to India\" transformation program, ensuring successful knowledge transfer, governance, stakeholder alignment and seamless service transition from European delivery centers to India without business disruption.", "My Role": "Managed multiple transition workstreams within the Carrefour ARGO Transformation Program, leading project planning, governance, stakeholder coordination, project documentation, knowledge transfer, cutover preparation and project reporting. Developed Project Definition Reports (PDRs), facilitated kick-off meetings, coordinated international delivery teams and ensured contractual milestones were successfully achieved.", "Responsibilities": "Defined project scope and objectives; developed transition schedules and work plans; coordinated sending and receiving teams across Czech Republic, France and India; managed stakeholders, risks, issues and dependencies; maintained RAID logs; organized governance meetings and project reporting; coordinated knowledge transfer, shadow mode, parallel run, cutover and aftercare activities; prepared and maintained PDRs, meeting minutes and project documentation; monitored contractual milestones and supported project closure.", "Outcome": "Successfully coordinated multiple transition workstreams contributing to Carrefour's international \"Move to India\" transformation program. Supported the successful transfer of infrastructure services while maintaining service continuity and governance throughout the transition lifecycle. The project team achieved key contractual milestones despite COVID-19 constraints and was formally recognized by IBM Transition & Transformation EMEA leadership for delivery excellence.", "PMI Process Groups": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"}, {"Project ID": "P004", "Project Name": "Lufthansa FITO2 – MCMP AIOps Reporting Migration", "Organization": "Kyndryl", "Role": "Transition Project Manager", "Dates": "Jan 21- Sep 22", "Project Objective": "Lead the migration of enterprise operational reporting from the legacy HP OBR platform to the MCMP AIOps Reporting solution as part of the Lufthansa FITO2 transformation program, enabling modernized reporting, governance and operational visibility.", "My Role": "Led the reporting migration project from initiation through deployment, developing the Project Definition Report (PDR), defining scope, milestones, governance, risks and dependencies, coordinating architects, SMEs and AIOps teams, preparing executive reporting and driving stakeholder alignment. Acted as deputy for the Tower Lead Project Manager during absences, ensuring continuity of project governance and customer communication.", "Responsibilities": "Defined project scope, objectives and acceptance criteria; managed project planning, executive reporting, risks, issues and dependencies; coordinated workshops, architecture reviews and customer meetings; maintained project documentation, RAID, project schedules and governance; monitored milestones, supported deployment readiness, training and Go-Live activities.", "Outcome": "Successfully delivered the governance and coordination of the MCMP AIOps Reporting Migration within the Lufthansa FITO2 transformation program, providing executive reporting, managing cross-project dependencies and supporting successful business readiness and deployment of the new reporting solution.", "PMI Process Groups": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"}, {"Project ID": "P005", "Project Name": "Lufthansa FITO2 – Billing & Consumption", "Organization": "Kyndryl", "Role": "Transition Project Manager", "Dates": "Jun 22 - Sep 22", "Project Objective": "Coordinate the implementation of Billing & Consumption processes supporting the Lufthansa FITO2 operating model, enabling accurate service consumption tracking, invoicing and ServiceNow-based commercial processes.", "My Role": "Took over the Billing & Consumption project following completion of the main Reporting Migration workstream, coordinating commercial, financial and technical stakeholders, supporting ServiceNow integration, customer governance, invoicing processes, consumption reporting and business readiness.", "Responsibilities": "Coordinated project planning, stakeholder communication, governance meetings, customer workshops, business process alignment, ServiceNow integration, consumption evidence definition, invoicing implementation, release planning, project reporting and handover activities across multiple teams.", "Outcome": "Successfully maintained project continuity after taking over the Billing & Consumption workstream, supporting implementation of new invoicing and consumption processes, coordinating cross-functional stakeholders and ensuring alignment between Lufthansa and Kyndryl teams.", "PMI Process Groups": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"}, {"Project ID": "P006", "Project Name": "Luminor Lighthouse 2 – Transformation Communication & Change Management", "Organization": "Kyndryl", "Role": "Transformation Communication Manager", "Dates": "Sep 2022 – Sep 2023", "Project Objective": "Establish and govern communication across the Lighthouse 2 enterprise transformation program, ensuring timely, accurate and coordinated communication for customers, business stakeholders, project teams and executive leadership throughout migration, release and Go-Live activities supporting Luminor's technology transformation.", "My Role": "Led the Communication Management workstream within the Lighthouse 2 transformation program, developing communication governance, stakeholder communication strategies, migration communication templates, Go-Live communication, executive messaging, customer communication and release communication processes. Coordinated communication between Luminor, IBM and Kyndryl organizations while supporting organizational readiness and business change activities.", "Responsibilities": "Developed enterprise communication plans; defined communication governance principles; coordinated stakeholder communication across business and technical organizations; prepared customer notifications, migration communications, Go-Live announcements and executive updates; maintained release calendars and change communication schedules; coordinated hypercare communication, migration event communication, communication approvals and communication readiness for transformation releases.", "Outcome": "Successfully established a structured communication governance framework supporting the Lighthouse 2 enterprise transformation program, enabling consistent communication across multiple transformation workstreams, migration events, customer-facing activities and major releases while improving stakeholder coordination within a regulated banking environment.", "PMI Process Groups": "Initiating • Planning • Executing • Monitoring & Controlling • Closing"}], "references": [{"Project ID": "P001", "Primary Project Reference": "Faycel Aridhi", "Position": "Delivery Manager", "Customer": "Hydro AS", "Supporting Evidence": "RFS Tracker, SoW, DOU, PDR, Weekly Status Reports, Customer Emails", "Systems / Tools": "RFS Tool, Lotus Notes/Outlook, Internal PM tools", "Reference Available": "Yes", "Notes": "First formal PM role. Portfolio of ~40 RFS projects."}, {"Project ID": "P002", "Primary Project Reference": "Faycel Aridhi", "Position": "Delivery Manager", "Customer": "Hydro AS", "Supporting Evidence": "Publicly documented Hydro cyberattack (March 2019); assignment to Hydro recovery team; personal project history", "Systems / Tools": "IBM collaboration tools; recovery coordination meetings; status reporting", "Reference Available": "Yes", "Notes": "Dedicated full-time crisis recovery assignment. One of three IBM Project Managers coordinating IBM recovery activities."}, {"Project ID": "P003", "Primary Project Reference": "Regis Ronco", "Position": "Transition Leader / Transition Project Manager", "Customer": "Carrefour", "Supporting Evidence": "Project Definition Reports (PDR), Kick-off presentations, KT plans and trackers, Governance presentations, Meeting minutes, Transition schedules, Weekly highlights recognition, Project emails.", "Systems / Tools": "IBM Box, Google Drive, WebEx, Lotus Notes/Outlook, KT Tracker, Project Plans, PDR repository", "Reference Available": "Yes", "Notes": "LinkedIn Recommendation available. Rehired by the same manager for Kyndryl CMA transition program several years later. Managed multiple transition workstreams within the Carrefour ARGO \"Move to India\" program. Author of multiple PDRs and governance documentation. Recognized by IBM T&T leadership for successful project delivery."}, {"Project ID": "P004", "Primary Project Reference": "Michael P. Schmidt", "Position": "Systems Management Tooling Tower Lead / Senior Project Manager", "Customer": "Lufthansa", "Supporting Evidence": "Project Definition Report (author), executive weekly status reports, project plans, WBS, organization chart, meeting minutes, scope workshops, architecture workshops, decision logs, project schedules, dependency tracking, executive reporting.", "Systems / Tools": "Box, WebEx, Outlook, Excel, PowerPoint, Project Plans, MCMP, HP OBR, AIOps, RAID Logs", "Reference Available": "Yes", "Notes": "Author of the MCMP AIOps Reporting Migration PDR. Named Project Manager for Workstream 6.7 in the Lufthansa FITO2 organization. Frequently acted as deputy for Michael Schmidt during absences."}, {"Project ID": "P005", "Primary Project Reference": "Sudipta Ganguly", "Position": "Transformation Program Lead / Service Management Integration Lead", "Customer": "Lufthansa", "Supporting Evidence": "Billing & Consumption PDR, weekly executive status reports, customer meeting minutes, handover documentation, project one-pagers, stakeholder lists, release documentation, ServiceNow planning, project tracking files.", "Systems / Tools": "ServiceNow, MCMP, Excel, Outlook, WebEx, Box, Project Tracker, Weekly Reports", "Reference Available": "Yes", "Notes": "Took over the Billing & Consumption workstream after the Reporting Migration reached a stable phase. Coordinated business, finance and technical stakeholders, customer governance, invoicing processes and ServiceNow integration. Customer requested continuity of project leadership when reassignment was planned, demonstrating stakeholder trust."}, {"Project ID": "P006", "Primary Project Reference": "Klaudia Smolinska", "Position": "PMO Lead – Lighthouse 2 Transformation Program", "Customer": "Luminor", "Supporting Evidence": "Enterprise Communication Plan, Go-Live communication templates, Migration Communication Framework, Communication Governance documents, Release Calendar, Change Calendar, Communication Tracker, Go-Live Tracker, Welcome Pack, customer notifications, migration event communication templates.", "Systems / Tools": "Microsoft Teams, Outlook, PowerPoint, Excel, Confluence, Box, ServiceNow, Change Calendar, Communication Tracker, Go-Live Tracker", "Reference Available": "Yes", "Notes": "Led the Communication Management workstream for the Lighthouse 2 transformation program. Developed communication governance, migration communication strategy, Go-Live communication, release calendars, stakeholder communication plans and customer communication processes supporting multiple transformation workstreams across IBM, Kyndryl and Luminor. Member of the official Lighthouse 2 Communication Coordination Team together with Luminor Communication and PMO leadership."}], "achievements": [{"Achievement ID": "A001", "Project ID": "P001", "Category": "First PM Role", "Achievement": "Successfully transitioned into my first formal Project Manager role, managing a portfolio of approximately 40 concurrent infrastructure projects.", "Why it Matters": "Demonstrates career progression from Team Leader to Project Manager.", "Career Impact": null, "Reusable for": "CV, LinkedIn, Interviews"}, {"Achievement ID": "A002", "Project ID": "P001", "Category": "Delivery", "Achievement": "Coordinated the successful delivery of multiple customer-requested infrastructure changes across server, database and application environments.", "Why it Matters": "Demonstrates ability to manage multiple concurrent projects.", "Career Impact": null, "Reusable for": "PMP, CV"}, {"Achievement ID": "A003", "Project ID": "P001", "Category": "Stakeholder Management", "Achievement": "Built strong working relationships with customer representatives, architects and technical delivery teams.", "Why it Matters": "Demonstrates stakeholder management capability.", "Career Impact": null, "Reusable for": "PMP, Interviews"}, {"Achievement ID": "A004", "Project ID": "P001", "Category": "Governance", "Achievement": "Applied structured project governance through SoW, DOU and PDR documentation across the project portfolio.", "Why it Matters": "Demonstrates governance and delivery discipline.", "Career Impact": null, "Reusable for": "PMP"}, {"Achievement ID": "A005", "Project ID": "P001", "Category": "Professional Growth", "Achievement": "Established the project management foundation that enabled progression into larger transition and transformation programs.", "Why it Matters": "Shows career development and readiness for more complex engagements.", "Career Impact": null, "Reusable for": "LinkedIn, About section"}, {"Achievement ID": "A006", "Project ID": "P002", "Category": "Crisis Leadership", "Achievement": "Assigned as one of three IBM Project Managers coordinating the infrastructure recovery effort following the March 2019 Hydro cyberattack.", "Why it Matters": "Coordinated cross-functional recovery teams working 24/7, prioritized restoration activities, maintained continuous communication with on-site customer representatives, and supported the structured recovery of enterprise infrastructure during a major cyber incident.", "Career Impact": "Confirmed my interest in leading complex, high-impact transformation initiatives and motivated my transition from RFS Project Management to Transition & Transformation.", "Reusable for": "PMP, CV, LinkedIn, Interviews"}, {"Achievement ID": "A007", "Project ID": "P003", "Category": "Transition & Transformation", "Achievement": "Successfully transitioned from infrastructure project management into enterprise Transition & Transformation, leading multiple international service transition workstreams within the Carrefour ARGO Program.", "Why it Matters": "Demonstrates ability to manage complex transformation initiatives across multiple technical domains, countries and stakeholders.", "Career Impact": "Established Transition & Transformation as my primary professional focus.", "Reusable for": "CV • LinkedIn • PMP • Interviews"}, {"Achievement ID": "A008", "Project ID": "P003", "Category": "Governance", "Achievement": "Designed and maintained project governance artifacts including Project Definition Reports (PDRs), transition methodology, RAID logs, stakeholder management, acceptance criteria and governance documentation.", "Why it Matters": "Demonstrates project governance, planning, documentation and delivery management capabilities.", "Career Impact": "Developed governance skills later applied in Lufthansa transformation projects and Enterprise AI governance work.", "Reusable for": "PMP • LinkedIn • Interviews"}, {"Achievement ID": "A009", "Project ID": "P003", "Category": "International Delivery", "Achievement": "Coordinated knowledge transfer, shadow mode, parallel run and cutover activities between delivery teams located in France, Czech Republic and India.", "Why it Matters": "Demonstrates international stakeholder management and large-scale service transition delivery.", "Career Impact": "Built confidence managing geographically distributed transformation programs.", "Reusable for": "PMP • CV • Interviews"}, {"Achievement ID": "A010", "Project ID": "P003", "Category": "Delivery Excellence", "Achievement": "Contributed to the successful transition of 132 FTE to India while supporting delivery of contractual milestones with no client service disruption during the COVID-19 pandemic.", "Why it Matters": "Demonstrates execution under complex operational constraints and focus on business continuity.", "Career Impact": "Strengthened experience managing transformation programs under challenging conditions.", "Reusable for": "CV • LinkedIn • Interviews"}, {"Achievement ID": "A011", "Project ID": "P003", "Category": "Recognition", "Achievement": "Formally recognized by IBM Transition & Transformation leadership for contributing to the successful delivery of the Carrefour ARGO \"Move to India\" transformation program.", "Why it Matters": "Independent recognition of delivery excellence from program leadership.", "Career Impact": "Validated readiness to manage larger international transformation initiatives.", "Reusable for": "LinkedIn • CV • Performance Reviews"}, {"Achievement ID": "A012", "Project ID": "P003", "Category": "Project Leadership", "Achievement": "Progressed from executing transition activities to designing project governance frameworks, authoring core project documentation and establishing delivery structure for multiple transition workstreams.", "Why it Matters": "Demonstrates progression from project coordination toward project leadership and governance ownership.", "Career Impact": "Built the governance and leadership experience that later supported enterprise transformation and AI governance initiatives.", "Reusable for": "LinkedIn • About • Interviews"}, {"Achievement ID": "A013", "Project ID": "P003", "Category": "Professional Trust", "Achievement": "Rehired several years later by the same Transition Program Manager to support another enterprise transition program at Kyndryl.", "Why it Matters": "Demonstrates long-term trust, delivery credibility and sustained professional relationships.", "Career Impact": "Reinforced my specialization in complex enterprise transition and transformation programs.", "Reusable for": "LinkedIn • CV • Interviews"}, {"Achievement ID": "A014", "Project ID": "P004", "Category": "Enterprise Transformation", "Achievement": "Led the MCMP AIOps Reporting Migration workstream within the Lufthansa FITO2 transformation program, driving governance, stakeholder alignment and migration from legacy reporting to an enterprise AIOps platform.", "Why it Matters": "Demonstrates ownership of an enterprise transformation workstream involving business, architecture and operational stakeholders.", "Career Impact": "Expanded my experience from transition management into enterprise transformation leadership.", "Reusable for": "LinkedIn • CV • PMP • Interviews"}, {"Achievement ID": "A015", "Project ID": "P004", "Category": "Governance", "Achievement": "Authored the Project Definition Report (PDR), executive governance documentation, project scope, milestones, dependencies, risks and acceptance criteria for the MCMP AIOps Reporting Migration.", "Why it Matters": "Demonstrates full project governance ownership and structured delivery management.", "Career Impact": "Strengthened governance capabilities later applied in AI governance and enterprise transformation initiatives.", "Reusable for": "PMP • LinkedIn • Interviews"}, {"Achievement ID": "A016", "Project ID": "P004", "Category": "Leadership", "Achievement": "Recognized by senior project leadership as deputy to the Tower Lead Project Manager, ensuring continuity of governance, stakeholder communication and project delivery during periods of absence.", "Why it Matters": "Independent recognition of leadership, trust and delivery capability.", "Career Impact": "Increased responsibility within the Lufthansa FITO2 transformation program and strengthened leadership credibility.", "Reusable for": "CV • LinkedIn • Interviews"}, {"Achievement ID": "A017", "Project ID": "P005", "Category": "Business Transformation", "Achievement": "Successfully took over the Billing & Consumption project after stabilization of the Reporting Migration workstream, ensuring continuity of delivery and alignment across commercial, financial and technical stakeholders.", "Why it Matters": "Demonstrates adaptability, business process transformation and cross-functional stakeholder management.", "Career Impact": "Expanded experience beyond technical transformation into commercial and business process transformation.", "Reusable for": "CV • PMP • Interviews"}, {"Achievement ID": "A018", "Project ID": "P005", "Category": "Customer Trust", "Achievement": "Built strong customer relationships during the Lufthansa FITO2 program, contributing to continuity of project leadership and trusted collaboration across customer and Kyndryl teams.", "Why it Matters": "Demonstrates stakeholder trust and effective executive communication.", "Career Impact": "Reinforced my reputation for dependable delivery in complex enterprise transformation environments.", "Reusable for": "LinkedIn • CV • Interviews"}, {"Achievement ID": "A019", "Project ID": "P006", "Category": "Change Management", "Achievement": "Established the communication governance framework for the Lighthouse 2 transformation program, defining communication principles, stakeholder engagement, approval flows and communication processes supporting multiple enterprise transformation workstreams.", "Why it Matters": "Demonstrates organizational change management and communication governance capabilities within a regulated enterprise environment.", "Career Impact": "Expanded my project management profile into organizational change and enterprise communication governance.", "Reusable for": "LinkedIn • CV • PMP • Interviews"}, {"Achievement ID": "A020", "Project ID": "P006", "Category": "Communication Governance", "Achievement": "Designed standardized communication templates and governance processes for migration events, Go-Live activities, hypercare and customer communication, enabling consistent communication across multiple transformation projects.", "Why it Matters": "Demonstrates governance standardization and repeatable delivery processes.", "Career Impact": "Strengthened governance design capabilities later applicable to enterprise AI adoption and transformation programs.", "Reusable for": "LinkedIn • PMP • Interviews"}, {"Achievement ID": "A021", "Project ID": "P006", "Category": "Executive Communication", "Achievement": "Coordinated communication between Luminor, IBM and Kyndryl stakeholders across business transformation, technology transformation and migration workstreams, ensuring consistent executive and customer messaging throughout the program lifecycle.", "Why it Matters": "Demonstrates executive stakeholder management across multiple organizations.", "Career Impact": "Strengthened executive communication skills in complex enterprise transformation environments.", "Reusable for": "CV • LinkedIn • Interviews"}, {"Achievement ID": "A022", "Project ID": "P006", "Category": "Release & Go-Live Management", "Achievement": "Established communication processes supporting Go-Live readiness, migration events, release calendars, hypercare and change windows for multiple Lighthouse 2 transformation initiatives.", "Why it Matters": "Demonstrates structured release readiness and cross-functional coordination.", "Career Impact": "Expanded experience in enterprise release governance and operational readiness.", "Reusable for": "PMP • CV • Interviews"}, {"Achievement ID": "A023", "Project ID": "P006", "Category": "Organizational Readiness", "Achievement": "Supported organizational readiness by aligning communication across customers, business stakeholders, technical delivery teams and executive leadership throughout a large-scale banking transformation program.", "Why it Matters": "Demonstrates the ability to drive adoption and stakeholder alignment during enterprise transformation.", "Career Impact": "Built the organizational change management experience that later complemented my work in Enterprise AI adoption and Responsible AI governance.", "Reusable for": "LinkedIn • About • AI Transformation • Interviews"}]}</script>
+      <section class="section fade-in" id="highlights">
+        <div class="section-head">
+          <div>
+            <h2>Career Highlights</h2>
+            <p>These are the moments that mattered: first PM role, crisis leadership, transition governance, trusted leadership and delivery recognition.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="controls">
+            <div class="search" style="max-width: 320px;">
+              <span class="icon">⌕</span>
+              <input id="highlightSearch" type="search" placeholder="Search highlights" />
+            </div>
+            <div class="filter-row" id="highlightChips"></div>
+          </div>
+          <div class="highlight-grid" id="highlightGrid"></div>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="learning">
+        <div class="section-head">
+          <div>
+            <h2>Continuous Learning</h2>
+            <p>Professional development sits beside the experience chapters, not inside them. That keeps the story honest and clean.</p>
+          </div>
+        </div>
+        <div class="learning-grid" id="learningGrid"></div>
+      </section>
+
+      <section class="section fade-in" id="resources">
+        <div class="section-head">
+          <div>
+            <h2>Resources</h2>
+            <p>Everything here is designed as a public-facing portfolio. Private evidence remains in your workbook and local archive.</p>
+          </div>
+        </div>
+        <div class="resource-grid" id="resourceGrid"></div>
+      </section>
+
+      <section class="section fade-in" id="contact">
+        <div class="section-head">
+          <div>
+            <h2>Contact</h2>
+            <p>A quiet closing note that leaves room for the next conversation.</p>
+          </div>
+        </div>
+        <div class="contact">
+          <div class="panel message">
+            <div class="subtle-note">Welcome Letter</div>
+            <div id="contactMessage"></div>
+            <div class="signature">— Olha Lys</div>
+          </div>
+          <div class="panel box">
+            <strong>Stay connected</strong>
+            <div class="subtle-note">Replace the placeholder link in the data file with your preferred public contact channel when you are ready.</div>
+            <div class="row" id="contactActions"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="small">Career OS v2.0</div>
+        <div>A professional journey built through projects, reflection, and continuous learning.</div>
+      </footer>
+    </main>
+  </div>
+
   <script>
-    const raw = document.getElementById('portfolio-data').textContent;
-    const DATA = JSON.parse(raw);
-
-    const projectOrder = DATA.projects.map(p => p['Project ID']);
-    const projectMap = Object.fromEntries(DATA.projects.map(p => [p['Project ID'], p]));
-    const summaryMap = Object.fromEntries(DATA.summary.map(s => [s['ID'], s]));
-    const pmiMap = Object.fromEntries(DATA.pmi.map(p => [p['Project ID'], p]));
-    const refMap = Object.fromEntries(DATA.references.map(r => [r['Project ID'], r]));
-    const achMap = DATA.achievements.reduce((acc, a) => { (acc[a['Project ID']] ||= []).push(a); return acc; }, {});
-
-    const roadmapMeta = [
-      { id: 'P001', title: 'Project Delivery', label: 'Build the foundation' },
-      { id: 'P002', title: 'Crisis Leadership', label: 'Recover under pressure' },
-      { id: 'P003', title: 'Transition Governance', label: 'Drive cross-border change' },
-      { id: 'P004', title: 'Enterprise Transformation', label: 'Scale governance & reporting' },
-      { id: 'P005', title: 'Business Process Transformation', label: 'Commercial + service alignment' },
-      { id: 'P006', title: 'Communication Governance', label: 'Change adoption & readiness' }
-    ];
-
-    const competencyRows = [
-      'Project Delivery',
-      'Stakeholder Management',
-      'Risk & Issue Management',
-      'Governance',
-      'Executive Reporting',
-      'Change Management',
-      'Crisis Leadership',
-      'Communication Governance',
-      'Business Transformation',
-      'Organizational Readiness',
-      'Strategic Thinking',
-      'Cross-country Delivery'
-    ];
-
-    const competencyMap = {
-      P001: ['Project Delivery','Stakeholder Management','Governance','Strategic Thinking'],
-      P002: ['Project Delivery','Stakeholder Management','Risk & Issue Management','Crisis Leadership','Executive Reporting'],
-      P003: ['Project Delivery','Stakeholder Management','Risk & Issue Management','Governance','Change Management','Cross-country Delivery','Strategic Thinking'],
-      P004: ['Project Delivery','Stakeholder Management','Governance','Executive Reporting','Strategic Thinking'],
-      P005: ['Stakeholder Management','Governance','Change Management','Business Transformation','Executive Reporting'],
-      P006: ['Stakeholder Management','Governance','Change Management','Communication Governance','Executive Reporting','Organizational Readiness']
+    const state = {
+      data: null,
+      theme: localStorage.getItem('career-os-theme') || 'light',
+      selectedCompetency: 'All',
+      searchExperiences: '',
+      searchHighlights: '',
+      activeExperienceCompany: 'All',
+      activeHighlightProject: 'All',
     };
 
-    // Theme toggle
-    const themeKey = 'career-os-theme';
-    const savedTheme = localStorage.getItem(themeKey);
-    if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem(themeKey, next);
-      document.getElementById('themeToggle').textContent = next === 'dark' ? '🌙 Theme' : '☀️ Theme';
-    });
-    document.getElementById('themeToggle').textContent = (savedTheme || 'dark') === 'dark' ? '🌙 Theme' : '☀️ Theme';
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+    const slug = (str) => String(str).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const norm = (str) => String(str || '').toLowerCase();
 
-    // Roadmap
-    const roadmapGrid = document.getElementById('roadmapGrid');
-    const roadLegend = document.getElementById('roadLegend');
-    roadmapMeta.forEach((item, idx) => {
-      const p = projectMap[item.id];
-      const s = summaryMap[item.id];
-      const card = document.createElement('article');
-      card.className = 'roadmap-card';
-      card.setAttribute('data-step', String(idx + 1).padStart(2, '0'));
-      card.innerHTML = `
-        <div class="year">${p['Start'].slice(0,4)} → ${p['End'].slice(0,4)}</div>
-        <h4>${item.title}</h4>
-        <p class="role">${p['Customer']}</p>
-        <p class="desc">${s['Business Objective']}</p>
-        <div class="tag">${p['Role']}</div>
+    function setTheme(theme) {
+      state.theme = theme;
+      document.body.dataset.theme = theme;
+      localStorage.setItem('career-os-theme', theme);
+      $('#themeToggle').textContent = theme === 'light' ? '☾' : '☼';
+    }
+
+    function pill(label, cls = '') {
+      const span = document.createElement('span');
+      span.className = `pill ${cls}`.trim();
+      span.textContent = label;
+      return span;
+    }
+
+    function button(label, href, cls = 'btn secondary', target = '') {
+      const a = document.createElement('a');
+      a.className = cls;
+      a.href = href;
+      if (target) a.target = target;
+      if (target === '_blank') a.rel = 'noopener noreferrer';
+      a.textContent = label;
+      return a;
+    }
+
+    function createSnapshotCard(item) {
+      return `
+        <article class="mini-card fade-in">
+          <div class="value">${item.value}</div>
+          <div class="label">${item.label}</div>
+        </article>
       `;
-      roadmapGrid.appendChild(card);
+    }
 
-      const legend = document.createElement('div');
-      legend.innerHTML = `<strong>${p['Project ID']}:</strong> ${item.label}`;
-      roadLegend.appendChild(legend);
-    });
+    function renderHero() {
+      const p = state.data.profile;
+      $('#versionLabel').textContent = state.data.meta.version;
+      $('#profileName').textContent = p.name;
+      $('#profileTitle').textContent = p.title;
+      $('#profileTagline').textContent = p.tagline;
+      $('#welcomeLetter').innerHTML = `<strong>${p.name}</strong><br><br>${p.welcome}`;
+      $('#contactMessage').innerHTML = `<p>${p.welcome}</p>`;
+      $('#heroActions').innerHTML = '';
+      p.cta.forEach((cta, i) => $('#heroActions').appendChild(button(cta.label, cta.href, i === 0 ? 'btn primary' : 'btn secondary')));
+      $('#snapshotGrid').innerHTML = p.snapshot.map(createSnapshotCard).join('');
+      const img = $('#portraitImg');
+      const fallback = $('#portraitFallback');
+      img.addEventListener('error', () => { img.hidden = true; fallback.hidden = false; });
+      img.addEventListener('load', () => { img.hidden = false; fallback.hidden = true; });
+      // Trigger load state for empty file situations
+      if (img.complete && img.naturalWidth > 0) { img.hidden = false; fallback.hidden = true; } else { img.hidden = true; fallback.hidden = false; }
+    }
 
-    // Filters/search
-    const filters = ['All', ...new Set(DATA.projects.map(p => p.Company)), ...new Set(DATA.projects.map(p => p.Customer))];
-    const filterRow = document.getElementById('filters');
-    let activeFilter = 'All';
-    let search = '';
+    function renderPrinciples() {
+      $('#principlesGrid').innerHTML = state.data.principles.map((p) => `
+        <article class="principle-card">
+          <strong>${p.title}</strong>
+          <p>${p.copy}</p>
+        </article>
+      `).join('');
+    }
+
+    function renderJourney() {
+      $('#journeyTimeline').innerHTML = state.data.journey.map((j, idx) => `
+        <article class="timeline-card fade-in" id="journey-${j.id}">
+          <div class="meta"><span>${j.step}</span><span>${j.period}</span><span>Chapter ${idx < 7 ? idx + 1 : '—'}</span></div>
+          <h3>${j.title}</h3>
+          <p class="subtitle">${j.subtitle}</p>
+          <blockquote>${j.reflection}</blockquote>
+          <p><strong>Theme:</strong> ${j.theme}</p>
+          <p>${j.note}</p>
+          <div class="chips">
+            <span class="tag">Prepared me for: ${j.prepared_for}</span>
+          </div>
+        </article>
+      `).join('');
+    }
 
     function renderFilters() {
-      filterRow.innerHTML = '';
-      filters.forEach(f => {
-        const b = document.createElement('button');
-        b.className = 'chip' + (f === activeFilter ? ' active' : '');
-        b.textContent = f;
-        b.type = 'button';
-        b.addEventListener('click', () => {
-          activeFilter = f;
-          renderFilters();
-          renderProjects();
-        });
-        filterRow.appendChild(b);
-      });
+      const expChips = ['All', ...new Set(state.data.experiences.map(e => e.company))];
+      $('#experienceChips').innerHTML = expChips.map(v => `<button class="chip ${state.activeExperienceCompany === v ? 'active' : ''}" data-filter="${v}">${v}</button>`).join('');
+      $('#experienceChips').onclick = (e) => {
+        const btn = e.target.closest('[data-filter]');
+        if (!btn) return;
+        state.activeExperienceCompany = btn.dataset.filter;
+        renderExperiences();
+        renderFilters();
+      };
+
+      $('#competencyChips').innerHTML = ['All', ...state.data.competencies.map(c => c.name)]
+        .map(v => `<button class="chip ${state.selectedCompetency === v ? 'active' : ''}" data-comp="${v}">${v}</button>`)
+        .join('');
+      $('#competencyChips').onclick = (e) => {
+        const btn = e.target.closest('[data-comp]');
+        if (!btn) return;
+        state.selectedCompetency = btn.dataset.comp;
+        renderMatrix();
+        renderExperiences();
+        renderFilters();
+      };
+
+      const highlightChips = ['All', ...new Set(state.data.achievements.map(a => a['Project ID']))];
+      $('#highlightChips').innerHTML = highlightChips.map(v => `<button class="chip ${state.activeHighlightProject === v ? 'active' : ''}" data-hl="${v}">${v}</button>`).join('');
+      $('#highlightChips').onclick = (e) => {
+        const btn = e.target.closest('[data-hl]');
+        if (!btn) return;
+        state.activeHighlightProject = btn.dataset.hl;
+        renderHighlights();
+        renderFilters();
+        renderExperiences();
+      };
     }
 
-    function projectMatches(p) {
-      const hay = [
-        p['Project ID'], p.Company, p.Customer, p['Portfolio / Engagement'], p['Scope / Portfolio'],
-        p.Role, p.Domain, p['Project Scale / Complexity'], summaryMap[p['Project ID']]?.['Business Objective'],
-        summaryMap[p['Project ID']]?.Scope, summaryMap[p['Project ID']]?.Responsibilities, summaryMap[p['Project ID']]?.Deliverables,
-        summaryMap[p['Project ID']]?.Achievements, summaryMap[p['Project ID']]?.Relevance
-      ].join(' ').toLowerCase();
-      const searchOk = !search || hay.includes(search.toLowerCase());
-      const filterOk = activeFilter === 'All' || p.Company === activeFilter || p.Customer === activeFilter;
-      return searchOk && filterOk;
+    function experienceMatches(exp) {
+      const q = norm(state.searchExperiences);
+      const inCompany = state.activeExperienceCompany === 'All' || exp.company === state.activeExperienceCompany;
+      const inComp = state.selectedCompetency === 'All' || (exp.competencies || []).includes(state.selectedCompetency);
+      const hay = norm([exp.projectId, exp.chapterTitle, exp.title, exp.company, exp.customer, exp.role, exp.theme, exp.context, exp.challenge, exp.contribution, exp.outcome, ...(exp.competencies || []), ...(exp.lessons || [])].join(' '));
+      const inQuery = !q || hay.includes(q);
+      return inCompany && inComp && inQuery;
     }
 
-    document.getElementById('search').addEventListener('input', (e) => {
-      search = e.target.value.trim();
-      renderProjects();
-    });
-
-    function barHtml(value, max) {
-      const pct = Math.max(10, Math.round((value / max) * 100));
-      return `<div class="bar"><span style="width:${pct}%"></span></div>`;
-    }
-
-    function renderProjects() {
-      const grid = document.getElementById('projectGrid');
-      grid.innerHTML = '';
-      const filtered = DATA.projects.filter(projectMatches);
-      filtered.forEach((p) => {
-        const s = summaryMap[p['Project ID']];
-        const pm = pmiMap[p['Project ID']];
-        const r = refMap[p['Project ID']];
-        const achs = achMap[p['Project ID']] || [];
-        const details = document.createElement('details');
-        details.className = 'project';
-        details.open = p['Project ID'] === 'P001';
-        details.innerHTML = `
-          <summary>
-            <div class="id-badge">${p['Project ID']}</div>
-            <div class="proj-head">
-              <h4>${p['Portfolio / Engagement']}</h4>
-              <div class="proj-sub"><strong>${p.Company}</strong> · ${p.Customer} · ${p.Role} · ${p['Start'].slice(0,7)} → ${p['End'].slice(0,7)}</div>
-              <div class="proj-tags">
-                <span class="tag2 accent">${p['Delivery Model']}</span>
-                <span class="tag2 blue">${p.Domain}</span>
-                <span class="tag2 good">${p['Duration (Months)']} months</span>
-                <span class="tag2 orange">${achs.length} achievements</span>
+    function renderExperiences() {
+      const grid = $('#experienceGrid');
+      const items = state.data.experiences.filter(experienceMatches);
+      grid.innerHTML = items.map((exp) => {
+        const tone = exp.accent;
+        return `
+          <details class="exp-card fade-in" data-proj="${exp.projectId}" data-comp="${(exp.competencies || []).join(', ')}" ${exp.projectId === 'P001' ? 'open' : ''}>
+            <summary>
+              <div class="exp-head">
+                <div>
+                  <div class="exp-kicker">${exp.chapter} · ${exp.chapterTitle}</div>
+                  <h3 class="exp-title">${exp.title}</h3>
+                  <p class="exp-meta"><strong>${exp.company}</strong> · ${exp.customer}<br>${exp.role} · ${exp.period}</p>
+                  <p class="exp-reflection">${exp.reflection}</p>
+                </div>
+                <div class="exp-open" style="--tone:${tone}">Read chapter →</div>
+              </div>
+              <div class="chips" style="margin-top: 12px;">
+                ${exp.competencies.map(c => `<span class="tag">${c}</span>`).join('')}
+              </div>
+            </summary>
+            <div class="exp-body">
+              <div class="exp-stack">
+                <div class="exp-box"><h4>Setting the scene</h4><p>${exp.context}</p></div>
+                <div class="exp-box"><h4>The challenge</h4><p>${exp.challenge}</p></div>
+                <div class="exp-box"><h4>My contribution</h4><p>${exp.contribution}</p></div>
+                <div class="exp-box"><h4>Looking back</h4><p>${exp.outcome}</p></div>
+                <div class="exp-box"><h4>What I learned</h4><p>${exp.lessons.join(', ')}</p></div>
+                <div class="exp-box"><h4>Prepared me for</h4><p>${exp.preparedFor}</p></div>
+              </div>
+              <div class="exp-footer">
+                <div class="evidence"><strong>Evidence:</strong> ${exp.evidence}</div>
+                <div><strong>PMI:</strong> ${exp.pmi}</div>
               </div>
             </div>
-          </summary>
-          <div class="project-body">
-            <div class="project-grid">
-              <div class="info-box">
-                <h5>Workbook objective</h5>
-                <p>${s['Business Objective']}</p>
-              </div>
-              <div class="info-box">
-                <h5>Workbook scope</h5>
-                <p>${s.Scope}</p>
-              </div>
-              <div class="info-box">
-                <h5>Workbook outcome</h5>
-                <p>${s.Achievements}</p>
-              </div>
-              <div class="info-box">
-                <h5>Responsibilities</h5>
-                <p>${s.Responsibilities}</p>
-              </div>
-              <div class="info-box">
-                <h5>Deliverables</h5>
-                <p>${s.Deliverables}</p>
-              </div>
-              <div class="info-box">
-                <h5>PMI process groups</h5>
-                <p>${pm['PMI Process Groups']}</p>
-              </div>
-            </div>
-            <div class="project-foot">
-              <div class="muted small"><strong>Scale:</strong> ${p['Project Scale / Complexity']}</div>
-              <div class="muted small"><strong>Relevance:</strong> ${s.Relevance}</div>
-            </div>
-            <div class="info-box">
-              <h5>Achievement depth</h5>
-              ${barHtml(achs.length, 7)}
-              <p class="muted small" style="margin-top:8px">${achs.length} documented achievements in the workbook for ${p['Project ID']}.</p>
-            </div>
-            <div class="info-box">
-              <h5>Reference snapshot</h5>
-              <p><strong>${r['Primary Project Reference']}</strong> · ${r.Position} · ${r.Customer} · Reference available: ${r['Reference Available']}</p>
-              <p class="muted small" style="margin-top:8px">Supporting evidence: ${r['Supporting Evidence']}</p>
-            </div>
-          </div>
+          </details>
         `;
-        grid.appendChild(details);
+      }).join('') || `<div class="subtle-note">No experiences match the current filter.</div>`;
+    }
+
+    function renderMatrix() {
+      const cols = state.data.experiences;
+      const rows = state.data.competencies;
+      const table = $('#competencyMatrix');
+      let html = '<thead><tr><th>Competency</th>' + cols.map(c => `<th>${c.chapterTitle}</th>`).join('') + '</tr></thead><tbody>';
+      rows.forEach((row) => {
+        const selected = state.selectedCompetency === row.name ? 'matrix-selected' : '';
+        html += `<tr class="matrix-row ${selected}" data-row="${row.name}"><td>${row.name}<div style="font-weight:400;color:var(--muted);margin-top:6px;line-height:1.45">${row.summary}</div></td>`;
+        cols.forEach((col) => {
+          const match = row.projectIds.includes(col.projectId) || row.projectIds.includes(col.company) || (col.competencies || []).includes(row.name);
+          html += `<td class="matrix-cell ${match ? 'match' : 'dim'}">${match ? '●' : ''}</td>`;
+        });
+        html += '</tr>';
       });
-      if (!filtered.length) {
-        const empty = document.createElement('div');
-        empty.className = 'panel';
-        empty.innerHTML = '<div style="padding:20px; color:var(--muted)">No projects matched your search or filter.</div>';
-        grid.appendChild(empty);
+      html += '</tbody>';
+      table.innerHTML = html;
+      table.onclick = (e) => {
+        const row = e.target.closest('[data-row]');
+        if (!row) return;
+        state.selectedCompetency = row.dataset.row;
+        renderMatrix();
+        renderFilters();
+        renderExperiences();
+      };
+    }
+
+    function renderHighlights() {
+      const groups = [...new Set(state.data.achievements.map(a => a['Project ID']))];
+      const projectLookup = Object.fromEntries(state.data.projects.map(p => [p['Project ID'], p]));
+      const q = norm(state.searchHighlights);
+      const wrapper = $('#highlightGrid');
+      wrapper.innerHTML = groups.map(pid => {
+        const achievements = state.data.achievements.filter(a => a['Project ID'] === pid).filter(a => !q || norm([a['Achievement ID'], a['Category'], a['Achievement'], a['Why it Matters'], a['Career Impact'] || '', a['Reusable for'] || ''].join(' ')).includes(q));
+        if (state.activeHighlightProject !== 'All' && state.activeHighlightProject !== pid) return '';
+        const project = projectLookup[pid] || { 'Project Name': pid };
+        return `
+          <details class="highlight-group fade-in" ${pid === 'P003' ? 'open' : ''}>
+            <summary>
+              <div>
+                <h3>${pid} · ${project['Project Name']}</h3>
+                <div class="count">${achievements.length} highlight${achievements.length === 1 ? '' : 's'}</div>
+              </div>
+              <div class="count">Click to expand</div>
+            </summary>
+            <div class="highlight-list">
+              ${achievements.map(a => `
+                <article class="highlight-item">
+                  <div class="meta"><span class="id">${a['Achievement ID']}</span><span class="category">${a['Category']}</span></div>
+                  <h4>${a['Achievement']}</h4>
+                  <p>${a['Why it Matters']}</p>
+                  ${a['Career Impact'] ? `<div class="impact"><strong>Career impact:</strong> ${a['Career Impact']}</div>` : ''}
+                </article>
+              `).join('') || `<div class="subtle-note">No highlights match this filter.</div>`}
+            </div>
+          </details>
+        `;
+      }).join('');
+    }
+
+    function renderLearning() {
+      const items = state.data.learning;
+      $('#learningGrid').innerHTML = `
+        <article class="learning-card fade-in">
+          <div class="meta">Professional Development</div>
+          <h3>${items[0].title}</h3>
+          <div class="subtle-note">${items[0].subtitle} · ${items[0].duration}</div>
+          <p>${items[0].summary}</p>
+          <ul>${items[0].bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+        </article>
+        <article class="learning-card fade-in">
+          <div class="meta">Why it matters</div>
+          <h3>Continuous learning</h3>
+          <p>${items[0].note}</p>
+          <div class="divider"></div>
+          <p class="subtle-note">This section is intentionally separate from experience. It keeps the story honest and gives room for future learning chapters.</p>
+          <div class="chips" style="margin-top: 12px;">
+            ${items[0].bullets.map(b => `<span class="tag">${b}</span>`).join('')}
+          </div>
+        </article>
+      `;
+    }
+
+    function renderResources() {
+      $('#resourceGrid').innerHTML = state.data.resources.map((r) => `
+        <article class="resource-card fade-in">
+          <div class="kicker">${r.kind === 'link' ? 'Public link' : 'Placeholder'}</div>
+          <h3>${r.title}</h3>
+          <p>${r.copy}</p>
+          ${r.kind === 'link'
+            ? `<a class="btn primary" href="${r.href}" target="_blank" rel="noopener noreferrer">Open</a>`
+            : `<a class="btn secondary" href="${r.href}" aria-disabled="true">Coming soon</a>`}
+        </article>
+      `).join('');
+    }
+
+    function renderContactActions() {
+      $('#contactActions').innerHTML = `
+        <a class="btn primary" href="#home">Back to top</a>
+        <a class="btn secondary" href="https://lysolha-ai.github.io/career-os/" target="_blank" rel="noopener noreferrer">View live portfolio</a>
+      `;
+    }
+
+    function initObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.14 });
+      $$('.fade-in').forEach((el) => observer.observe(el));
+    }
+
+    function bindControls() {
+      $('#themeToggle').addEventListener('click', () => setTheme(state.theme === 'light' ? 'dark' : 'light'));
+      $('#expSearch').addEventListener('input', (e) => {
+        state.searchExperiences = e.target.value;
+        renderExperiences();
+      });
+      $('#highlightSearch').addEventListener('input', (e) => {
+        state.searchHighlights = e.target.value;
+        renderHighlights();
+      });
+      document.addEventListener('click', (e) => {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (!anchor) return;
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      const img = $('#portraitImg');
+      const fallback = $('#portraitFallback');
+      img.addEventListener('error', () => {
+        img.hidden = true;
+        fallback.hidden = false;
+      });
+      img.addEventListener('load', () => {
+        img.hidden = false;
+        fallback.hidden = true;
+      });
+    }
+
+    function renderAll() {
+      renderHero();
+      renderPrinciples();
+      renderJourney();
+      renderFilters();
+      renderExperiences();
+      renderMatrix();
+      renderHighlights();
+      renderLearning();
+      renderResources();
+      renderContactActions();
+      initObserver();
+    }
+
+    async function boot() {
+      try {
+        const response = await fetch('./career-data.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error(`Failed to load data: ${response.status}`);
+        state.data = await response.json();
+        document.title = state.data.meta.pageTitle;
+        setTheme(state.theme);
+        bindControls();
+        renderAll();
+      } catch (err) {
+        console.error(err);
+        document.getElementById('app').innerHTML = `<section class="panel" style="margin-top:24px;padding:24px;">\n          <h2 style="margin-top:0;">Unable to load the portfolio data</h2>\n          <p class="subtle-note">${err.message}. If you are opening the file locally, run it from a web server or publish it through GitHub Pages so the JSON file can be loaded.</p>\n        </section>`;
       }
     }
 
-    // Matrix
-    const table = document.getElementById('matrixTable');
-    let html = '<thead><tr><th>Competency</th>';
-    DATA.projects.forEach(p => { html += `<th class="center">${p['Project ID']}</th>`; });
-    html += '</tr></thead><tbody>';
-    competencyRows.forEach(row => {
-      html += `<tr><td>${row}</td>`;
-      DATA.projects.forEach(p => {
-        const yes = competencyMap[p['Project ID']].includes(row);
-        html += `<td class="center"><span class="tick ${yes ? 'on' : ''}"></span></td>`;
-      });
-      html += '</tr>';
-    });
-    html += '</tbody>';
-    table.innerHTML = html;
-
-    // Depth chart
-    const maxAch = Math.max(...DATA.projects.map(p => (achMap[p['Project ID']]||[]).length));
-    const maxDur = Math.max(...DATA.projects.map(p => p['Duration (Months)']));
-    const chart = document.getElementById('depthChart');
-    chart.innerHTML = DATA.projects.map(p => {
-      const achCount = (achMap[p['Project ID']]||[]).length;
-      const dur = p['Duration (Months)'];
-      const width = Math.max(12, Math.round((achCount / maxAch) * 72));
-      const width2 = Math.max(12, Math.round((dur / maxDur) * 72));
-      return `
-        <div style="margin: 14px 0 16px;">
-          <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:8px; font-size:13px;">
-            <strong>${p['Project ID']} · ${p.Customer}</strong>
-            <span class="muted">${dur} months · ${achCount} achievements</span>
-          </div>
-          <div class="bar" title="duration"><span style="width:${width2}%"></span></div>
-          <div style="height:6px"></div>
-          <div class="bar" title="achievements"><span style="width:${width}%"></span></div>
-        </div>`;
-    }).join('');
-
-    // Achievements grouped by project
-    const achievementsWrap = document.getElementById('achievementsWrap');
-    DATA.projects.forEach(p => {
-      const list = achMap[p['Project ID']] || [];
-      const group = document.createElement('details');
-      group.className = 'ach-group';
-      group.open = p['Project ID'] === 'P001';
-      group.innerHTML = `
-        <summary>
-          <div>
-            <strong>${p['Project ID']} · ${p['Portfolio / Engagement']}</strong>
-            <div class="muted small">${list.length} workbook achievements</div>
-          </div>
-          <div class="tag2 accent">${p.Customer}</div>
-        </summary>
-        <div class="ach-grid"></div>
-      `;
-      const grid = group.querySelector('.ach-grid');
-      list.forEach(a => {
-        const card = document.createElement('article');
-        card.className = 'ach-card';
-        card.innerHTML = `
-          <h5>${a['Achievement ID']} · ${a.Category}</h5>
-          <div class="title">${a.Achievement}</div>
-          <div class="muted small"><strong>Why it matters:</strong> ${a['Why it Matters']}</div>
-          ${a['Career Impact'] ? `<div class="muted small" style="margin-top:8px"><strong>Career impact:</strong> ${a['Career Impact']}</div>` : ''}
-          <div class="meta">${String(a['Reusable for']).split('•').map(x => `<span class="tag2">${x.trim()}</span>`).join('')}</div>
-        `;
-        grid.appendChild(card);
-      });
-      achievementsWrap.appendChild(group);
-    });
-
-    // References
-    const refsGrid = document.getElementById('referencesGrid');
-    DATA.references.forEach(r => {
-      const card = document.createElement('article');
-      card.className = 'ref-card';
-      card.innerHTML = `
-        <h4>${r['Project ID']} · ${r['Primary Project Reference']}</h4>
-        <div class="role">${r.Position} · ${r.Customer}</div>
-        <div class="note"><strong>Supporting evidence:</strong> ${r['Supporting Evidence']}</div>
-        <div class="evidence">
-          <span class="tag2 good">Reference available</span>
-          <span class="tag2">${r['Systems / Tools']}</span>
-        </div>
-        <div class="muted small" style="margin-top:10px">${r.Notes}</div>
-      `;
-      refsGrid.appendChild(card);
-    });
-
-    renderFilters();
-    renderProjects();
+    boot();
   </script>
 </body>
 </html>
